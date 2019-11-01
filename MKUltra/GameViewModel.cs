@@ -102,6 +102,13 @@ namespace MKUltra
             set => SetProperty(ref togglePlayerHasWon, value);
         }
 
+        private ICommand startGame;
+        public ICommand StartGame
+        {
+            get => startGame;
+            set => SetProperty(ref startGame, value);
+        }
+
         private ObservableCollection<Lesson> lessonsCollection;
         public ObservableCollection<Lesson> LessonsCollection
         {
@@ -118,7 +125,8 @@ namespace MKUltra
 
         public GameViewModel()
         {
-           togglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
+           TogglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
+            StartGame = new DelegateCommand(OnStartGame, null);
 
             LessonsCollection = new ObservableCollection<Lesson>();
             cvs = new CollectionViewSource();
