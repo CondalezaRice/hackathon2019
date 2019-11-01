@@ -33,14 +33,14 @@ namespace MKUltra
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Lesson l = (Lesson)gvm.LessonsCollectionView.CurrentItem;
-            if ((char)e.Text.Trim()[0] != l.LessonString[l.CurrentIndex])
+            if ((char)e.Text[0] != l.LessonString[l.CurrentIndex])
             {
                 e.Handled = true;
             }
             else
             {
                 l.CurrentIndex++;
-                if (l.CurrentIndex == l.LessonString.Length - 1)
+                if (l.CurrentIndex == l.LessonString.Length)
                 {
                     youWonText.Visibility = Visibility.Visible;
                 }

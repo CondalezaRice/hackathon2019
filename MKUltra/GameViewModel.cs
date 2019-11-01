@@ -133,6 +133,7 @@ namespace MKUltra
             cvs.Source = LessonsCollection;
             LessonsCollectionView = cvs.View;
 
+            LessonsCollection.Add(new Lesson("Testing!", "Super Simple", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_easy, "Amazing Amazon", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_medium, "Marvelous Microsoft", LessonDifficulty.Medium));
             LessonsCollection.Add(new Lesson(challenge_hard, "Fantastic Facebook", LessonDifficulty.Hard));
