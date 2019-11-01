@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MKUltra.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,24 @@ namespace MKUltra
             InitializeComponent();
 
             this.DataContext = gvm;
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Lesson l = (Lesson)gvm.LessonsCollectionView.CurrentItem;
+            if ((char)e.Text.Trim()[0] != l.LessonString[l.CurrentIndex])
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                l.CurrentIndex++;
+                if (l.CurrentIndex == l.LessonString.Length - 1)
+                {
+                    youWonText.Visibility = Visibility.Visible;
+                }
+            }
+            
         }
     }
 }

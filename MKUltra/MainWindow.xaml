@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MKUltra"
         xmlns:controls="clr-namespace:MKUltra.UI.Controls"
         xmlns:views="clr-namespace:MKUltra.Views"
+        xmlns:model="clr-namespace:MKUltra.Model"
         mc:Ignorable="d"
         x:Name="MyMainWindow"
         Title="Typemaster 5001"
@@ -21,7 +22,8 @@
 
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <StackPanel Orientation="Vertical">
+        
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
             <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
@@ -35,7 +37,30 @@
             </StackPanel.Style>
             <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" />
         </StackPanel>
-        <controls:TypingGameDisplay>
+        <ListBox
+            SelectionMode="Single"
+            x:Name="lessonsBox"
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding LessonsCollectionView, Mode=OneWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type model:Lesson}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Black" Text="{Binding LessonName, Mode=OneWay}" />
+                        <TextBlock Foreground="Black" Text="{Binding Difficulty, Mode=OneWay}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Background="White">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="1" Padding="4,0">
+                <Grid>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding ElementName=lessonsBox, Path=SelectedItem.LessonString, Mode=OneWay}" FontSize="18" FontWeight="Bold" Opacity=".5" IsReadOnly="True" IsReadOnlyCaretVisible="False" />
+                    <TextBox Background="Transparent" TextWrapping="Wrap" VerticalAlignment="Stretch"  FontSize="18" FontWeight="Bold" Foreground="Blue" PreviewTextInput="TextBox_PreviewTextInput" />
+                </Grid>
+            </Border>
+        </Grid>
+        <TextBlock x:Name="youWonText" Text="YOU WON!!!!" FontSize="52" HorizontalAlignment="Center" Foreground="White" Visibility="Collapsed" FontWeight="Black"/>
+        <!--<controls:TypingGameDisplay>
             <controls:TypingGameDisplay.Style>
                 <Style TargetType="{x:Type controls:TypingGameDisplay}">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -46,6 +71,6 @@
                     </Style.Triggers>
                 </Style>
             </controls:TypingGameDisplay.Style>
-        </controls:TypingGameDisplay>
-    </Grid>
+        </controls:TypingGameDisplay>-->
+    </StackPanel>
 </Window>
