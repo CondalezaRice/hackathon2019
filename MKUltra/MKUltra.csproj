@@ -61,6 +61,10 @@
     <Compile Include="Views\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="example_pickChallenge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +72,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="example_pickChallenge.xaml.cs">
+      <DependentUpon>example_pickChallenge.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
