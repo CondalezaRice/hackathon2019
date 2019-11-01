@@ -5,3 +5,23 @@ Team USA has been losing speed wars to Team Timbuktu in the global games of spee
 ViewModel
 
 The ViewModel will serve as the bridge between the data Models and the View. The ViewModel contains ObservableCollections of both Players and Challenges, so that changes to the properties of both models can be propogated to the View. The ViewModel also contains several properties utilizing the INotifyPropertyChanged Interface, which enables bidirectional databinding between the ViewModel and View. User actions are handled using a combination of ICommands and EventHandlers, which enables the decoupling of user interface control objects from the ViewModel interactions. 
+
+
+
+Challenge/Lesson Model
+
+Lessons will consist of a block of text.
+
+Player
+-two types, human and AI
+	-AI
+		-array of inputs and a time for each, generated for each lesson
+		-difficulty(typing rate, will divide number of characters into a ) or 
+		-Race your time, 
+	-Human
+		-Player History
+			-wins
+			-losses
+			-Each lesson will be saved live, each keypress needs a time, so that you can "ghost" race
+			-Record number of mistakes for each lesson
+			
