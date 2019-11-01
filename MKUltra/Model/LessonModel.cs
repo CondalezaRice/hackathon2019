@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-
+    public enum LessonDifficulty {Easy, Medium, Hard};
     public class LessonModel { }
     public class Lesson
     {
@@ -25,6 +25,18 @@ namespace MKUltra.Model
                     lesson_string_ = value;
                 }
             }
+        }
+        public LessonDifficulty Difficulty;
+        public string LessonName;
+        public Lesson(string content)
+        {
+            LessonString = content;
+        }
+        public Lesson(string content, string name, LessonDifficulty ld)
+        {
+            LessonString = content;
+            Difficulty = ld;
+            LessonName = name;
         }
     }
 
