@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace MKUltra
@@ -77,6 +78,9 @@ namespace MKUltra
             "offering (IPO) in February 2012, valuing the company at $104 billion, the largest valuation to date for a " +
             "newly listed public company. Facebook makes most of its revenue from advertisements that appear onscreen and in users' News Feeds.";
 
+        public CollectionViewSource cvs { get; set; }
+        public ICollectionView LessonsCollectionView { get; set; }
+
         private bool playerHasWon;
         public bool PlayerHasWon
         {
@@ -91,18 +95,18 @@ namespace MKUltra
             set => SetProperty(ref gameHasStarted, value);
         }
 
-        private ICommand startGame;
-        public ICommand StartGame
-        {
-            get => startGame;
-            set => SetProperty(ref startGame, value);
-        }
-
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
             get => togglePlayerHasWon;
             set => SetProperty(ref togglePlayerHasWon, value);
+        }
+
+        private ICommand startGame;
+        public ICommand StartGame
+        {
+            get => startGame;
+            set => SetProperty(ref startGame, value);
         }
 
         private ObservableCollection<Lesson> lessonsCollection;
@@ -121,14 +125,18 @@ namespace MKUltra
 
         public GameViewModel()
         {
-            togglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
-            startGame = new DelegateCommand(OnStartGame, null);
+           TogglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
+            StartGame = new DelegateCommand(OnStartGame, null);
 
             LessonsCollection = new ObservableCollection<Lesson>();
+            cvs = new CollectionViewSource();
+            cvs.Source = LessonsCollection;
+            LessonsCollectionView = cvs.View;
 
             LessonsCollection.Add(new Lesson(challenge_easy, "Amazing Amazon", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_medium, "Marvelous Microsoft", LessonDifficulty.Medium));
             LessonsCollection.Add(new Lesson(challenge_hard, "Fantastic Facebook", LessonDifficulty.Hard));
+
         }
 
         private void OnTogglePlayerHasWon(object o)

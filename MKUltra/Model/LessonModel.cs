@@ -26,8 +26,8 @@ namespace MKUltra.Model
                 }
             }
         }
-        public LessonDifficulty Difficulty;
-        public string LessonName;
+        public LessonDifficulty Difficulty { get; set; }
+        public string LessonName { get; set; }
         public Lesson(string content)
         {
             LessonString = content;
