@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-
+    public enum LessonDifficulty {Easy, Medium, Hard};
     public class LessonModel { }
     public class Lesson
     {
         private string lesson_string_;
-        private string lesson_name_;
         public string LessonString
         {
             get
@@ -27,8 +26,18 @@ namespace MKUltra.Model
                 }
             }
         }
-
-        public string Lesson_name_ { get => lesson_name_; set => lesson_name_ = value; }
+        public LessonDifficulty Difficulty;
+        public string LessonName;
+        public Lesson(string content)
+        {
+            LessonString = content;
+        }
+        public Lesson(string content, string name, LessonDifficulty ld)
+        {
+            LessonString = content;
+            Difficulty = ld;
+            LessonName = name;
+        }
     }
 
     //LessonHistory in progress, it is meant to help store keystrokes for playback purposes 
