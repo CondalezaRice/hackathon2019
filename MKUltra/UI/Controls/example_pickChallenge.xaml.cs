@@ -16,7 +16,7 @@ using System.Timers;
 using System.Windows.Threading;
 using System.Diagnostics;
 
-namespace MKUltra
+namespace MKUltra.UI.Controls
 {
     /// <summary>
     /// Interaction logic for example_pickChallenge.xaml
