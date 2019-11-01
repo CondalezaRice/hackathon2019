@@ -20,9 +20,13 @@ namespace MKUltra
     /// </summary>
     public partial class MainWindow : Window
     {
+        GameViewModel gvm = new GameViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = gvm;
         }
     }
 }

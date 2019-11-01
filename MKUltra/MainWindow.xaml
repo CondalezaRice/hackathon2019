@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="300">
     <Grid>
-        <TextBlock Text="This is Parker"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Did the player win?"/>
+            <Button Command="{Binding TogglePlayerHasWon, Mode=OneWay}" Content="Toggle" HorizontalAlignment="Left" Padding="10,5"/>
+            <TextBlock>
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Text" Value="Nope "/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding PlayerHasWon, Mode=OneWay}" Value="true">
+                                <Setter Property="Text" Value="Yep!!!"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </StackPanel>
+        
+        
     </Grid>
 </Window>
