@@ -16,11 +16,12 @@ namespace MKUltra.Model
         private int wins_;
         private int losses_;
         private LessonHistory[] lessons_history_;
+        private string name_;
 
         public int Wins_ { get => wins_; set => wins_ = value; }
         public int Losses_ { get => losses_; set => losses_ = value; }
         public LessonHistory[] Lessons_history_ { get => lessons_history_; set => lessons_history_ = value; }
-
+        public string Name_ { get => name_; set => name_ = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
