@@ -45,11 +45,20 @@ namespace MKUltra.Model
     {
         private Lesson lesson_;
         private int mistakes_;
-        //todo: data structure for time to keypress/character
+        private List<Keystroke> keystrokes_;
 
         public Lesson Lesson_ { get => lesson_; set => lesson_ = value; }
 
         public int Mistakes_ { get => mistakes_; set => mistakes_ = value; }
+        public List<Keystroke> Keystrokes_ { get => keystrokes_; set => keystrokes_ = value; }
+    }
+    public class Keystroke
+    {
+        private int time_;
+        private char character_;
+
+        public int Time_ { get => time_; set => time_ = value; }
+        public char Character_ { get => character_; set => character_ = value; }
     }
 }
 

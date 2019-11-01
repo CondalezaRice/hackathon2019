@@ -23,9 +23,29 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
-            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" 
-                             Visibility="{Binding DisplayStartMenu, Converter={StaticResource BtoV}}"/>
+            <StackPanel.Style>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" />
         </StackPanel>
-        <controls:TypingGameDisplay Visibility="{Binding GameHasStarted, Converter={StaticResource BtoV}}" />
+        <controls:TypingGameDisplay>
+            <controls:TypingGameDisplay.Style>
+                <Style TargetType="{x:Type controls:TypingGameDisplay}">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </controls:TypingGameDisplay.Style>
+        </controls:TypingGameDisplay>
     </Grid>
 </Window>
