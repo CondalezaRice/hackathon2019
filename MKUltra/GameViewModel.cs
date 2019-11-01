@@ -56,11 +56,6 @@ namespace MKUltra
             set => SetProperty(ref gameHasStarted, value);
         }
 
-        public bool DisplayStartMenu
-        {
-            get { return !GameHasStarted; }
-        }
-
         private bool playerHasWon = false;
         public bool PlayerHasWon
         {
