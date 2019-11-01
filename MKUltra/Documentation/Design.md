@@ -26,12 +26,11 @@ Player
 			-Record number of mistakes for each lesson
 
 
-
 View
 
 The View will be the visual interface displayed to the user. The View will provide the following:
 
-1. An option select a challenge
+1. An option to select a challenge
 2. A way to start the selected challenge
 3. Two means of displaying text to the user, with an option to switch between them:
 	a. A fixed text block ( or blocks, as space allows) to display the text for the user to type. For this option, there will be a visual indicator of the user's progress through the text. There will also be a visual indicator of the AI's progress. With this option, the user will be able to see all of the text for the challenge.
@@ -42,6 +41,9 @@ The View will be the visual interface displayed to the user. The View will provi
 6. Optionally, a display if other relevant statistics, e.g. accuracy
 7. A completion view to display at the end of the challenge
 	a. At a minimum, displays player vs. AI scores
-8. Upon challenge completion, the view will provide an opton for the user to replay the previous challenge, or select a new one.
+8. Upon challenge completion, the view will provide an option for the user to replay the previous challenge, or select a new one.
+
+
+
 
 
