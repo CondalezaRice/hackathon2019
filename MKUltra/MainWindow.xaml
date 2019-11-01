@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MKUltra"
         xmlns:controls="clr-namespace:MKUltra.UI.Controls"
+        xmlns:views="clr-namespace:MKUltra.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="Typemaster 5001"
+        WindowState="Maximized"
+        WindowStyle="SingleBorderWindow" Background="#FF313131">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,6 +19,9 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
+            <views:StartMenu></views:StartMenu>
+        </StackPanel>
         <controls:TypingGameDisplay />
     </Grid>
 </Window>
