@@ -118,5 +118,10 @@ namespace MKUltra
         {
             PlayerHasWon = !PlayerHasWon;
         }
+
+        private void OnStartGame(object o)
+        {
+            GameHasStarted = true;
+        }
     }
 }

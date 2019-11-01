@@ -7,6 +7,7 @@
         xmlns:controls="clr-namespace:MKUltra.UI.Controls"
         xmlns:views="clr-namespace:MKUltra.Views"
         mc:Ignorable="d"
+        x:Name="MyMainWindow"
         Title="Typemaster 5001"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow" Background="#FF313131">
@@ -16,12 +17,15 @@
                 <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/MaterialDesignIcons.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/IconResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BtoV" />
+
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
-            <views:StartMenu></views:StartMenu>
+            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" 
+                             Visibility="{Binding DisplayStartMenu, Converter={StaticResource BtoV}}"/>
         </StackPanel>
-        <controls:TypingGameDisplay />
+        <controls:TypingGameDisplay Visibility="{Binding GameHasStarted, Converter={StaticResource BtoV}}" />
     </Grid>
 </Window>
