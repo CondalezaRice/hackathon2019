@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:MKUltra"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="300">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/MaterialDesignIcons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/IconResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Did the player win?"/>
@@ -22,6 +30,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
+            <Path Data="{StaticResource format_shapes}" Style="{StaticResource IconRotated180FlippedX}" Height="16" Width="16" Stretch="Fill" Fill="Black"/>
         </StackPanel>
         
         
