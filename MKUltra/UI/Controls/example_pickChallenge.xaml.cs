@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MKUltra
+namespace MKUltra.UI.Controls
 {
     /// <summary>
     /// Interaction logic for example_pickChallenge.xaml
