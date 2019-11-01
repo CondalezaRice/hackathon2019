@@ -1,0 +1,3 @@
+﻿Team Challenge Two:
+
+Team USA has been losing speed wars to Team Timbuktu in the global games of speed typing. All the US tech leaders including Bezos, Gates, and Zuckerberg have put in their resources to recruit developers to build a speed typing game. The game will be the official trainer for Team USA as they try to get back on top of the world against Team Timbuktu. This game should be able to measure typing speed per minute. The user should be able to keep track of their overall progress as they complete the timed test. Your goal should you choose to accept this is to make this game addicting where Team USA players will want to always be typing on it and improving their speed.
