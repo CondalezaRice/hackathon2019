@@ -84,6 +84,13 @@ namespace MKUltra
             set => SetProperty(ref playerHasWon, value);
         }
 
+        private bool gameHasStarted;
+        public bool GameHasStarted
+        {
+            get => gameHasStarted;
+            set => SetProperty(ref gameHasStarted, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
