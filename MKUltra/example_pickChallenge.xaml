@@ -17,8 +17,7 @@
     
     <Grid>
         <StackPanel>
-
-        <GroupBox Margin="10" Padding="10">
+            <GroupBox Margin="10" Padding="10">
                 <StackPanel>
                     <TextBlock Foreground="White">Pick Difficulty</TextBlock>
                     <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Width="248">
@@ -27,11 +26,13 @@
                         <ComboBoxItem Content="Hard (150+ words)" HorizontalAlignment="Left" Width="298"/>
                     </ComboBox>
 
+                    <Label x:Name="lblTimer" Content="Label" HorizontalAlignment="Left" Margin="113,56,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnCommand" Content="Start" HorizontalAlignment="Left" Margin="97,116,0,0" VerticalAlignment="Top" Width="75" Click="btnCommand_Click"/>
+
                 </StackPanel>
             </GroupBox>
-
         </StackPanel>
-
+        
 
     </Grid>
     
