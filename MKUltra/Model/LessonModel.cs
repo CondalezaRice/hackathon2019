@@ -36,12 +36,12 @@ namespace MKUltra.Model
     {
         private Lesson lesson_;
         private int mistakes_;
-        private Keystroke[] keystrokes_;
+        private List<Keystroke> keystrokes_;
 
         public Lesson Lesson_ { get => lesson_; set => lesson_ = value; }
 
         public int Mistakes_ { get => mistakes_; set => mistakes_ = value; }
-        public Keystroke[] Keystrokes_ { get => keystrokes_; set => keystrokes_ = value; }
+        public List<Keystroke> Keystrokes_ { get => keystrokes_; set => keystrokes_ = value; }
     }
     public class Keystroke
     {
