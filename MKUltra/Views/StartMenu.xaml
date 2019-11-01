@@ -9,7 +9,10 @@
 
     <Grid>
         <StackPanel Margin="0,0,0,32">
-            <TextBlock Margin="0,0,0,10" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="36">Typemaster 5001</TextBlock>
+            <StackPanel HorizontalAlignment="Center" Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBlock Foreground="White" FontWeight="Bold" FontSize="36">Typemaster 5001</TextBlock>
+                <Image Source="/Resources/flag.png" Width="75" Margin="20,0,0,0" />
+            </StackPanel>
             <TextBlock Margin="0,0,0,75" HorizontalAlignment="Center" Foreground="White" FontSize="20">The (un)official trainer of Team USA</TextBlock>
             <Button Width="100" Height="50" FontSize="24">Start!</Button>
         </StackPanel>
