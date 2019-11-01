@@ -47,7 +47,21 @@ namespace MKUltra
 
     class GameViewModel : ViewModelBase
     {
-        private bool playerHasWon;
+
+        private bool gameHasStarted = false;
+
+        public bool GameHasStarted
+        {
+            get => gameHasStarted;
+            set => SetProperty(ref gameHasStarted, value);
+        }
+
+        public bool DisplayStartMenu
+        {
+            get { return !GameHasStarted; }
+        }
+
+        private bool playerHasWon = false;
         public bool PlayerHasWon
         {
             get => playerHasWon;
@@ -61,14 +75,27 @@ namespace MKUltra
             set => SetProperty(ref togglePlayerHasWon, value);
         }
 
+        private ICommand startGame;
+        public ICommand StartGame
+        {
+            get => startGame;
+            set => SetProperty(ref startGame, value);
+        }
+
         public GameViewModel()
         {
            togglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
+           startGame = new DelegateCommand(OnStartGame, null);
         }
 
         private void OnTogglePlayerHasWon(object o)
         {
             PlayerHasWon = !PlayerHasWon;
+        }
+
+        private void OnStartGame(object o)
+        {
+            GameHasStarted = true;
         }
     }
 }
