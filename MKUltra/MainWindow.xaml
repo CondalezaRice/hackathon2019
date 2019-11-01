@@ -4,26 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MKUltra"
+        xmlns:views="clr-namespace:MKUltra.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="Typemaster 5001"
+        WindowState="Maximized"
+        WindowStyle="SingleBorderWindow" Background="#FF313131">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Did the player win?"/>
-            <Button Command="{Binding TogglePlayerHasWon, Mode=OneWay}" Content="Toggle" HorizontalAlignment="Left" Padding="10,5"/>
-            <TextBlock>
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="Text" Value="Nope "/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding PlayerHasWon, Mode=OneWay}" Value="true">
-                                <Setter Property="Text" Value="Yep!!!"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
+            <views:StartMenu></views:StartMenu>
         </StackPanel>
-        
-        
     </Grid>
 </Window>
