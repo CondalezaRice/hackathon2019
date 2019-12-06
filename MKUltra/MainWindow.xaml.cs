@@ -123,6 +123,9 @@ namespace MKUltra
 
         private void UpdateStatisticsOnCharacterTyped(bool isCharacterCorrect, string lastKey)
         {
+            //Console.WriteLine(Environment.CurrentDirectory);
+            System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(@"team_america.wav");
+
             if (!_isChallengeStarted && !_isChallengeEnded)
             {
                 _isChallengeStarted = true;
@@ -152,21 +155,22 @@ namespace MKUltra
                 gvm.SingleGameStatistics.Combo++;
 
                 //combo message
-                if (gvm.SingleGameStatistics.Combo > 15)
+                if (gvm.SingleGameStatistics.Combo > 25)
                 {
                     gvm.SingleGameStatistics.Combo_Message = "WOW!! Keep it up!";
                 }
 
                 //sound test
-                if (gvm.SingleGameStatistics.Combo == 15)
+                if (gvm.SingleGameStatistics.Combo == 25)
                 {
-                    //(new System.Media.SoundPlayer(@"C:\Users\Bryce\Downloads\KVSH-Tokyo-Drift.mp3")).Play();
-                    System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify.wav");
-                    soundPlayer.Play();
+                    System.Media.SoundPlayer soundPlayer2 = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify.wav");
+                    soundPlayer2.Play();
                 }
-                if (gvm.SingleGameStatistics.Combo >= 25)
+                if (gvm.SingleGameStatistics.Combo >= 50)
                 {
                     //do something else cool
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+                    soundPlayer.Play();
                 }
             }
             else
@@ -178,6 +182,7 @@ namespace MKUltra
                 gvm.SingleGameStatistics.Combo_Message = " ";
                 //play the you messed up noise
                 System.Media.SystemSounds.Hand.Play();
+                soundPlayer.Stop();
             }
 
             // update percentage correct
