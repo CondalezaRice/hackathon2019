@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-    public class CumulativeStatistics : SingleGameStatistics, INotifyPropertyChanged
+    public class CumulativeStatistics : BaseStatistics, INotifyPropertyChanged
     {
         private int _totalGamesPlayed = 0;
         public int TotalGamesPlayed
@@ -29,19 +29,6 @@ namespace MKUltra.Model
         {
             get => _gamesLost;
             set => SetProperty(ref _gamesLost, value);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)
-        {
-            if (!EqualityComparer<T>.Default.Equals(field, newValue))
-            {
-                field = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-            return false;
         }
 
     }
