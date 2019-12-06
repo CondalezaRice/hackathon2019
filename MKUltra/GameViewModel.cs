@@ -109,6 +109,13 @@ namespace MKUltra
             set => SetProperty(ref startGame, value);
         }
 
+        private string userInput;
+        public string UserInput
+        {
+            get => userInput;
+            set => SetProperty(ref userInput, value);
+        }
+
         private ObservableCollection<Lesson> lessonsCollection;
         public ObservableCollection<Lesson> LessonsCollection
         {
@@ -121,6 +128,18 @@ namespace MKUltra
         {
             get => playersCollection;
             set => SetProperty(ref playersCollection, value);
+        }
+
+        /// <summary>
+        /// Author PTR: Everytime there is a keystroke, the code needs to reference the current lesson to track
+        /// user progress. We could do this by casting the CollectionView.CurrentItem, but casting is expensive, so 
+        /// just set the CurrentLesson whenever the user makes a lesson selection.
+        /// </summary>
+        private Lesson currentLesson;
+        public Lesson CurrentLesson
+        {
+            get => currentLesson;
+            set => SetProperty(ref currentLesson, value);
         }
 
         public GameViewModel()
