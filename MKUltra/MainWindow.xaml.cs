@@ -45,34 +45,43 @@ namespace MKUltra
                 return;
 
             // good space
-            if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
+            try
             {
-                gvm.CurrentLesson.TypingHistory += " ";
-                UpdateLessonProgress(e.Key.ToString());
-                // Call validation stuff (gmv.statistics_handler.whatever())
-            }
-            else if (e.Key != Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
-            {
-                if (e.Key.ToString().Length == 1)
+
+                if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
                 {
-                    if (Char.IsLetterOrDigit(e.Key.ToString()[0]) || Char.IsPunctuation(e.Key.ToString()[0]))
-                    {
-                        gvm.CurrentLesson.TypingHistory += e.Key.ToString()[0];
-                    }
+                    gvm.CurrentLesson.TypingHistory += " ";
+                    UpdateLessonProgress(e.Key.ToString());
+                    // Call validation stuff (gmv.statistics_handler.whatever())
                 }
-                UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
-                e.Handled = true;
+                else if (e.Key != Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
+                {
+                    if (e.Key.ToString().Length == 1)
+                    {
+                        if (Char.IsLetterOrDigit(e.Key.ToString()[0]) || Char.IsPunctuation(e.Key.ToString()[0]))
+                        {
+                            gvm.CurrentLesson.TypingHistory += e.Key.ToString()[0];
+                        }
+                    }
+                    UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
+                    e.Handled = true;
+                }
+                else if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() != " ")
+                {
+                    gvm.CurrentLesson.TypingHistory += " ";
+                    UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
+                    e.Handled = true;
+                }
+                else if (e.Key == Key.Back || e.Key == Key.Delete)
+                {
+                    UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
+                    e.Handled = true;
+                }
             }
-            else if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() != " ")
+
+            catch
             {
-                gvm.CurrentLesson.TypingHistory += " ";
-                UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
-                e.Handled = true;
-            }
-            else if (e.Key == Key.Back || e.Key == Key.Delete)
-            {
-                UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
-                e.Handled = true;
+                Console.WriteLine("Error, out of bounds for input");
             }
         }
 
@@ -81,22 +90,29 @@ namespace MKUltra
             if (gvm.CurrentLesson == null)
                 return;
 
-            Console.WriteLine($"currentLessonChar: {gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex]}\ncurrentUserChar: {e.Text}\nequals? : {gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == e.Text}");
-
-            gvm.CurrentLesson.TypingHistory += e.Text;
-
-            if (gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == e.Text)
+            try
             {
-                UpdateLessonProgress(e.Text);
-            }
-            else
-            {
-                UpdateStatisticsOnCharacterTyped(false, e.Text);
-                e.Handled = true;
-            }
+                Console.WriteLine($"currentLessonChar: {gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex]}\ncurrentUserChar: {e.Text}\nequals? : {gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == e.Text}");
 
-            Console.WriteLine("Typing History: " + gvm.CurrentLesson.TypingHistory);
-            Console.WriteLine("Typing Progress: " + gvm.CurrentLesson.TypingProgress);
+                gvm.CurrentLesson.TypingHistory += e.Text;
+
+                if (gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == e.Text)
+                {
+                    UpdateLessonProgress(e.Text);
+                }
+                else
+                {
+                    UpdateStatisticsOnCharacterTyped(false, e.Text);
+                    e.Handled = true;
+                }
+
+                Console.WriteLine("Typing History: " + gvm.CurrentLesson.TypingHistory);
+                Console.WriteLine("Typing Progress: " + gvm.CurrentLesson.TypingProgress);
+            }
+            catch
+            {
+                Console.WriteLine("Error out of bounds for input");
+            }
         }
 
         private void lessonsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -127,17 +143,22 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.CharactersCorrect++;
 
-                if ( lastKey.Equals(Key.Space.ToString() ) || lastKey.Equals(".")) //If character was a space, comma or period then increment total words
+                if ( lastKey.Equals(Key.Space.ToString() ) || lastKey.Equals(".")) //If character was a space or period then increment total words
                 {
                     gvm.SingleGameStatistics.TotalWords++; // do we want to make a serperate counter for punctuation?
                 }
+
+                //update combo score
+                gvm.SingleGameStatistics.Combo++;
             }
             else
             {
                 gvm.SingleGameStatistics.CharactersIncorrect++;
+                //set combo score back to 0
+                gvm.SingleGameStatistics.Combo = 0;
             }
 
-            // update our values for percentage correct
+            // update percentage correct
             double new_percentage_correct = ((gvm.SingleGameStatistics.CharactersIncorrect / gvm.SingleGameStatistics.CharactersCorrect) - 1) * -100;
             if (new_percentage_correct >= 0)
             {
@@ -147,6 +168,7 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.Percentage_correct = 0;
             }
+            
 
             if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
             {

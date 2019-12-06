@@ -46,12 +46,20 @@ namespace MKUltra.Model
             set => SetProperty(ref _totalSecondsPlayed, value);
         }
 
-        //define percentage correct stuff
+        //percentage correct
         private double _percentage_correct;
         public double Percentage_correct
         {
             get => _percentage_correct;
             set => SetProperty(ref _percentage_correct, value);
+        }
+
+        //combo score
+        private double _combo;
+        public double Combo
+        {
+            get => _combo;
+            set => SetProperty(ref _combo, value);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
