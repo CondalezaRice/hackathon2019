@@ -139,6 +139,14 @@ namespace MKUltra
             set => SetProperty(ref startGame, value);
         }
 
+        private string selectedDifficulty = null;
+        public string SelectedDifficulty
+        {
+            get => selectedDifficulty;
+            set => SetProperty(ref selectedDifficulty, value);
+        }
+
+
         private string userInput;
         public string UserInput
         {
@@ -204,6 +212,29 @@ namespace MKUltra
 
         private void OnStartGame(object o)
         {
+            Console.WriteLine("Difficulty: " + SelectedDifficulty);
+            if (SelectedDifficulty == "Baby")
+            {
+                CurrentLesson = LessonsCollection.Where(l => l.LessonName == "Quick").FirstOrDefault();
+            }
+            else if (SelectedDifficulty == "Easy")
+            {
+                CurrentLesson = LessonsCollection.Where(l => l.LessonName == "Fantastic Fitness").FirstOrDefault();
+            }
+            else if (SelectedDifficulty == "Medium")
+            {
+                CurrentLesson = LessonsCollection.Where(l => l.LessonName == "Amazing Amazon").FirstOrDefault();
+            }
+            else if (SelectedDifficulty == "Hard")
+            {
+                CurrentLesson = LessonsCollection.Where(l => l.LessonName == "Fantastic Facebook").FirstOrDefault();
+            }
+            else
+            {
+                Console.WriteLine("Yikes");
+                return;
+            }
+
             GameHasStarted = true;
         }
 

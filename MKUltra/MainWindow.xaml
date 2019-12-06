@@ -24,57 +24,50 @@
             Grid.Row="0"
             DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" 
             VerticalAlignment="Center" 
-            Loaded="StartMenu_Loaded">
+            Loaded="StartMenu_Loaded"
+            SelectedDifficulty="{Binding ElementName=MyMainWindow, Path=DataContext.SelectedDifficulty, Mode=TwoWay}">
         </views:StartMenu>
 
-        <StackPanel Grid.Row="1">
-            <ListBox
-                SelectionMode="Single"
-                x:Name="lessonsBox"
-                Margin="20"
-                IsSynchronizedWithCurrentItem="True"
-                SelectionChanged="lessonsBox_SelectionChanged"
-                ItemsSource="{Binding LessonsCollectionView, Mode=OneWay}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type model:Lesson}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Foreground="Black" Text="{Binding LessonName, Mode=OneWay}" />
-                            <TextBlock Foreground="Black" Text="{Binding Difficulty, Mode=OneWay}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <Grid Background="White" Margin="20">
-                <Border BorderBrush="Black" BorderThickness="1" Margin="1" Padding="4,0">
-                    <Grid>
-                        <TextBox TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding ElementName=lessonsBox, Path=SelectedItem.LessonString, Mode=OneWay}" FontSize="18" FontWeight="Bold" Opacity=".5" IsReadOnly="True" IsReadOnlyCaretVisible="False" />
-                        <TextBox 
-                            Background="Transparent" 
-                            TextWrapping="Wrap" 
-                            VerticalAlignment="Stretch" 
-                            FontSize="18" 
-                            FontWeight="Bold" 
-                            Foreground="Blue" 
-                            PreviewKeyDown="TextBox_PreviewKeyDown"
-                            PreviewTextInput="TextBox_PreviewTextInput" />
-                    </Grid>
-                </Border>
-            </Grid>
-            <TextBlock x:Name="youWonText" Text="YOU WON!!!!" FontSize="52" HorizontalAlignment="Center" Foreground="White" Visibility="Collapsed" FontWeight="Black"/>
-        </StackPanel>
+        <Grid Background="White" Margin="20" Grid.Row="1">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=DataContext.GameHasStarted, Mode=OneWay, ElementName=MyMainWindow}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <TextBox 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Stretch" 
+                Text="{Binding ElementName=MyMainWindow, Path=DataContext.CurrentLesson.LessonString, Mode=OneWay}" 
+                FontSize="18" 
+                FontWeight="Bold" 
+                Opacity=".5" 
+                IsReadOnly="True" 
+                IsReadOnlyCaretVisible="False" />
+            <TextBox 
+                Background="Transparent" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Stretch" 
+                FontSize="18" 
+                FontWeight="Bold" 
+                Foreground="Blue" 
+                PreviewKeyDown="TextBox_PreviewKeyDown"
+                PreviewTextInput="TextBox_PreviewTextInput" />
+        </Grid>
 
         <views:Statistics 
             VerticalAlignment="Center" 
             Grid.Row="2">
             <views:Statistics.Style>
                 <Style TargetType="{x:Type views:Statistics}">
-                    <Setter Property="Visibility" Value="Visible"/>
+                    <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=OneWay, ElementName=MyMainWindow}" Value="true">
+                        <DataTrigger Binding="{Binding Path=DataContext.GameHasStarted, Mode=OneWay, ElementName=MyMainWindow}" Value="true">
                             <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=OneWay, ElementName=MyMainWindow}" Value="false">
-                            <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

@@ -25,5 +25,19 @@ namespace MKUltra.Views
             InitializeComponent();
         }
 
+        public static readonly DependencyProperty SelectedDifficultyProperty =
+            DependencyProperty.Register("SelectedDifficulty", typeof(string), typeof(StartMenu));
+        public string SelectedDifficulty
+        {
+            get { return (string)GetValue(SelectedDifficultyProperty); }
+            set { SetValue(SelectedDifficultyProperty, value); }
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            ComboBoxItem cbi = (ComboBoxItem)cb.SelectedItem;
+            SelectedDifficulty = (string)cbi.Content;
+        }
     }
 }
