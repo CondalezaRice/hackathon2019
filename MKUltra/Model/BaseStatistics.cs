@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-    public class BaseStatistics : ViewModelBase
+    public class BaseStatistics : INotifyPropertyChanged
     {
 
         private double _totalCharactersTyped = 0;
@@ -70,17 +70,17 @@ namespace MKUltra.Model
             set => SetProperty(ref _combo_message, value);
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)
-        //{
-        //    if (!EqualityComparer<T>.Default.Equals(field, newValue))
-        //    {
-        //        field = newValue;
-        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //        return true;
-        //    }
-        //    return false;
-        //}
+        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)
+        {
+            if (!EqualityComparer<T>.Default.Equals(field, newValue))
+            {
+                field = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true;
+            }
+            return false;
+        }
     }
 }
