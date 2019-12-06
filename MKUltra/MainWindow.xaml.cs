@@ -95,5 +95,10 @@ namespace MKUltra
             ListBox lb = (ListBox)sender;
             gvm.CurrentLesson = (Lesson)lb.SelectedItem;
         }
+
+        private void StartMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
