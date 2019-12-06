@@ -12,9 +12,28 @@
         Title="Typemaster 5001"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow" Background="#1C2444">
-    <StackPanel Orientation="Vertical">
-        
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <views:StartMenu 
+            Margin="10"
+            MaxWidth="350"
+            DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" 
+            VerticalAlignment="Stretch" >
+            <views:StartMenu.Style>
+                <Style TargetType="{x:Type views:StartMenu}">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:StartMenu.Style>
+        </views:StartMenu>
+        <!--<StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
             <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="Visibility" Value="Visible"/>
@@ -25,9 +44,9 @@
                     </Style.Triggers>
                 </Style>
             </StackPanel.Style>
-            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" VerticalAlignment="Center" />
-        </StackPanel>
-        <StackPanel>
+            
+        </StackPanel>-->
+        <StackPanel Grid.Row="1">
             <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -84,7 +103,7 @@
             </controls:TypingGameDisplay>-->
         </StackPanel>
         
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StatisticsPanel">
+        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" Name="StatisticsPanel">
             <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="Visibility" Value="Visible"/>
@@ -101,8 +120,8 @@
             <views:Statistics VerticalAlignment="Center" DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}" Width="500"/>
         </StackPanel>
 
-        <Button Width="200" Height="50" FontSize="24" Command="{Binding Path=DataContext.ToggleDisplayStatisticsCommand, ElementName=MyMainWindow}" Content="Statitistics Test" />
+        <Button Grid.Row="1" Width="200" Height="50" FontSize="24" Command="{Binding Path=DataContext.ToggleDisplayStatisticsCommand, ElementName=MyMainWindow}" Content="Statitistics Test" />
         
 
-    </StackPanel>
+    </Grid>
 </Window>

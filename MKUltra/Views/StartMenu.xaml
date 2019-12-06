@@ -5,19 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MKUltra.Views"
       xmlns:controls="clr-namespace:MKUltra.UI.Controls"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      mc:Ignorable="d" >
 
     <Grid>
-        <StackPanel Margin="0,0,0,32">
-            <StackPanel HorizontalAlignment="Left" Margin="5,5,0,0" Orientation="Horizontal">
-                <Image Source="/Resources/TeamUSALogo.png" Width="300" Margin="0,0,0,0" />
-            </StackPanel>
-            <Grid>
-                <TextBlock Margin="300,-420,0,0" HorizontalAlignment="Center" Foreground="White" FontSize="42">OFFICIAL TYPE TRAINER</TextBlock>
-            </Grid>
-            <controls:example_pickChallenge Width="260" Margin="0,0,0,40" />
-            <Button Width="100" Height="50" FontSize="24" Command="{Binding StartGame}">Start!</Button>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Image 
+                DockPanel.Dock="Left"
+                Source="pack://application:,,,/MKUltra;component//Resources/TeamUSALogo.png" 
+                Stretch="Uniform" 
+                HorizontalAlignment="Left" 
+                MaxWidth="100" 
+                Margin="20,0" />
+            <TextBlock 
+                Margin="0,0,20,0"
+                DockPanel.Dock="Right"
+                HorizontalAlignment="Right" 
+                TextWrapping="Wrap"
+                Foreground="White" 
+                LineHeight="42"
+                LineStackingStrategy="BlockLineHeight"
+                Text="OFFICIAL&#10;TYPE&#10;TRAINER"
+                FontSize="42"/>
+        </DockPanel>
+        
+        <controls:example_pickChallenge 
+            Grid.Row="1"
+            Margin="0,0,0,0" />
+        <Button 
+            Width="100" 
+            Height="50" 
+            Margin="10"
+            FontSize="24" 
+            Grid.Row="2"
+            Command="{Binding StartGame}"
+            Content="Start!"/>
     </Grid>
 </UserControl>
