@@ -34,6 +34,9 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="White" Text="Statistics" />
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
@@ -79,6 +82,26 @@
             </StackPanel>
             <!--Cumulative stats column stop-->
 
+
+
+
+
+
+
+
+
+          <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="1">
+            <TextBlock Text="Total Games: " Foreground="White" />
+            <TextBlock Text="{Binding Path=TotalGamesPlayed}" Foreground="White" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
+            <TextBlock Text="Games Won: " Foreground="White" />
+            <TextBlock Text="{Binding Path=GamesWon}" Foreground="White" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="3">
+            <TextBlock Text="Games Lost: " Foreground="White" />
+            <TextBlock Text="{Binding Path=GamesLost}" Foreground="White" />
+          </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

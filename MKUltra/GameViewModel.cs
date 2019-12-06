@@ -126,6 +126,13 @@ namespace MKUltra
             set => SetProperty(ref _singleGameStatistics, value);
         }
 
+        private CumulativeStatistics _cumulativeStatistics = new CumulativeStatistics();
+        public CumulativeStatistics CumulativeStatistics
+        {
+            get => _cumulativeStatistics;
+            set => SetProperty(ref _cumulativeStatistics, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
