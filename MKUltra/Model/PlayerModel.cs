@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-    //This is for you Parker
+    //Will move to proper home if time allows
     public class Statistics_Handler
     {
 
