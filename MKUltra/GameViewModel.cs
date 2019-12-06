@@ -234,6 +234,7 @@ namespace MKUltra
                 SelectedDifficulty = null;
                 PlayerHasWon = false;
                 UserInputTextBox.Clear();
+                ClearCurrentGameStats();
                 return;
             }
 
@@ -266,6 +267,11 @@ namespace MKUltra
         private void OnToggleDisplayStatistics (object o)
         {
             IsDisplayingStatistics = !IsDisplayingStatistics;
+        }
+
+        private void ClearCurrentGameStats()
+        {
+            SingleGameStatistics = new SingleGameStatistics();
         }
     }
 }
