@@ -12,16 +12,6 @@
         Title="Typemaster 5001"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow" Background="#FF313131">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/MaterialDesignIcons.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/IconResources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <BooleanToVisibilityConverter x:Key="BtoV" />
-
-        </ResourceDictionary>
-    </Window.Resources>
     <StackPanel Orientation="Vertical">
         
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
