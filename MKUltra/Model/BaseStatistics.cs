@@ -62,6 +62,14 @@ namespace MKUltra.Model
             set => SetProperty(ref _combo, value);
         }
 
+        //combo score message
+        private string _combo_message = " ";
+        public string Combo_Message
+        {
+            get => _combo_message;
+            set => SetProperty(ref _combo_message, value);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)

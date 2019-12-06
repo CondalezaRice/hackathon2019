@@ -150,12 +150,20 @@ namespace MKUltra
 
                 //update combo score
                 gvm.SingleGameStatistics.Combo++;
+
+                //combo message
+                if (gvm.SingleGameStatistics.Combo > 15)
+                {
+                    gvm.SingleGameStatistics.Combo_Message = "WOW!! Keep it up!";
+                }
             }
             else
             {
                 gvm.SingleGameStatistics.CharactersIncorrect++;
                 //set combo score back to 0
                 gvm.SingleGameStatistics.Combo = 0;
+                //setting combo message back to nothing because if you lost the combo you are nothing
+                gvm.SingleGameStatistics.Combo_Message = " ";
             }
 
             // update percentage correct
