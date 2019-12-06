@@ -67,6 +67,7 @@
     <Compile Include="UI\Controls\TypingGameDisplay.xaml.cs">
       <DependentUpon>TypingGameDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\StatisticsViewModel.cs" />
     <Compile Include="Views\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>

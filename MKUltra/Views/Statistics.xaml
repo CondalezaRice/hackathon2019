@@ -18,6 +18,9 @@
             <RowDefinition />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="STATISTICS HERE" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="Mode: " Foreground="White" />
+            <TextBlock Text="{Binding Path=StatisticsType}" Foreground="White" />
+        </StackPanel>
     </Grid>
 </UserControl>
