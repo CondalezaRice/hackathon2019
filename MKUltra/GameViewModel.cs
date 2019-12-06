@@ -109,6 +109,13 @@ namespace MKUltra
             set => SetProperty(ref _isDisplayingStatistics, value);
         }
 
+        private SingleGameStatistics _singleGameStatistics = new SingleGameStatistics();
+        public SingleGameStatistics SingleGameStatistics
+        {
+            get => _singleGameStatistics;
+            set => SetProperty(ref _singleGameStatistics, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
@@ -151,6 +158,13 @@ namespace MKUltra
             set => SetProperty(ref playersCollection, value);
         }
 
+        private Statistics_Handler statistics_handler = new Statistics_Handler();
+        public Statistics_Handler Statistics_handler
+        {
+            get => statistics_handler;
+            set => SetProperty(ref statistics_handler, value);
+        }
+
         /// <summary>
         /// Author PTR: Everytime there is a keystroke, the code needs to reference the current lesson to track
         /// user progress. We could do this by casting the CollectionView.CurrentItem, but casting is expensive, so 
@@ -178,7 +192,6 @@ namespace MKUltra
             LessonsCollection.Add(new Lesson(challenge_easy, "Amazing Amazon", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_medium, "Marvelous Microsoft", LessonDifficulty.Medium));
             LessonsCollection.Add(new Lesson(challenge_hard, "Fantastic Facebook", LessonDifficulty.Hard));
-
         }
 
         private void OnTogglePlayerHasWon(object o)

@@ -9,18 +9,45 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
-            <ColumnDefinition />
-            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition MinWidth="400"/>
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
             <RowDefinition />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-            <TextBlock Text="Mode: " Foreground="White" />
-            <TextBlock Text="{Binding Path=StatisticsType}" Foreground="White" />
-        </StackPanel>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="400"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="White" Text="Statistics" />
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                <TextBlock Text="Correct Characters Typed: " Foreground="White" />
+                <TextBlock Text="{Binding Path=CharactersCorrect}" Foreground="White" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                <TextBlock Text="Incorrect Characters Typed: " Foreground="White" />
+                <TextBlock Text="{Binding Path=CharactersIncorrect}" Foreground="White" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                <TextBlock Text="Total Characters Typed: " Foreground="White" />
+                <TextBlock Text="{Binding Path=TotalCharactersTyped}" Foreground="White" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4">
+                <TextBlock Text="Total Words Typed: " Foreground="White" />
+                <TextBlock Text="{Binding Path=TotalWords}" Foreground="White" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

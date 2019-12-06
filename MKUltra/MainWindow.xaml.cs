@@ -30,9 +30,10 @@ namespace MKUltra
             this.DataContext = gvm;
         }
 
-        private void UpdateLessonProgress()
+        private void UpdateLessonProgress(string lastKey)
         {
             gvm.CurrentLesson.CurrentIndex++;
+            UpdateStatisticsOnCharacterTyped(true, lastKey);
             gvm.CurrentLesson.TypingProgress = gvm.CurrentLesson.LessonString.Substring(0, gvm.CurrentLesson.CurrentIndex);
         }
 
@@ -41,10 +42,12 @@ namespace MKUltra
             if (gvm.CurrentLesson == null)
                 return;
 
+            // good space
             if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
             {
                 gvm.CurrentLesson.TypingHistory += " ";
-                UpdateLessonProgress();
+                UpdateLessonProgress(e.Key.ToString());
+                // Call validation stuff (gmv.statistics_handler.whatever())
             }
             else if (e.Key != Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
             {
@@ -55,15 +58,18 @@ namespace MKUltra
                         gvm.CurrentLesson.TypingHistory += e.Key.ToString()[0];
                     }
                 }
+                UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
                 e.Handled = true;
             }
             else if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() != " ")
             {
                 gvm.CurrentLesson.TypingHistory += " ";
+                UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
                 e.Handled = true;
             }
             else if (e.Key == Key.Back || e.Key == Key.Delete)
             {
+                UpdateStatisticsOnCharacterTyped(false, e.Key.ToString());
                 e.Handled = true;
             }
         }
@@ -79,10 +85,11 @@ namespace MKUltra
 
             if (gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == e.Text)
             {
-                UpdateLessonProgress();
+                UpdateLessonProgress(e.Text);
             }
             else
             {
+                UpdateStatisticsOnCharacterTyped(false, e.Text);
                 e.Handled = true;
             }
 
@@ -96,9 +103,22 @@ namespace MKUltra
             gvm.CurrentLesson = (Lesson)lb.SelectedItem;
         }
 
-        private void StartMenu_Loaded(object sender, RoutedEventArgs e)
+        private void UpdateStatisticsOnCharacterTyped(bool isCharacterCorrect, string lastKey)
         {
+            gvm.SingleGameStatistics.TotalCharactersTyped++;
+            if (isCharacterCorrect)
+            {
+                gvm.SingleGameStatistics.CharactersCorrect++;
 
+                if (lastKey.Equals(Key.Space.ToString())) //If character was a space, then increment total words
+                {
+                    gvm.SingleGameStatistics.TotalWords++;
+                }
+            }
+            else
+            {
+                gvm.SingleGameStatistics.CharactersIncorrect++;
+            }
         }
     }
 }

@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 namespace MKUltra.Model
 {
     //This is for you Parker
-    public class Text_Handler
+    public class Statistics_Handler
     {
-        //Make instance of text_handler and call init()
-        //Call
-        // is word correct
-        //  pass in word and lesson words
-        //  check if they are equal
-        //  if not - return a false bool
-        //  else return true
+
+        //Counter is how many words we have in the completed words string. Essentially it is our score before
+        //  accounting for any other weirdness that may have been typed in
         private int counter;
+        private int score;
 
         /*
         private string word;
@@ -26,27 +23,43 @@ namespace MKUltra.Model
         public string Word { get => word; set => word = value; }
         public string Lesson_words { get => Lesson_words; set => Lesson_words = value; }
         */
-        public int Counter { get => Counter; set => Counter = value; }
+        public int Counter { get => counter; set => counter = value; }
+        public int Score { get => score; set => score = value; }
 
-        public bool check_word(string word, string lesson_words)
+        public Statistics_Handler()
         {
-            bool ret;
+            init();
+        }
+
+        //get score
+        public int get_score()
+        {
+            return score;
+        }
+
+        //get word count
+        public int get_word_count()
+        {
+            return counter;
+        }
+
+        // each time the completed words section adds a space call this
+        public void check_word(string word, string lesson_words)
+        {
             //for word in split(' ') lesson_words:
             string[] lesson_words_list = lesson_words.Split(' ');
             if (lesson_words_list[counter] == word)
             {
-                ret = true;
+                
             }
 
             else
             {
                 Console.WriteLine("This is what didn't match");
                 Console.WriteLine(lesson_words_list[counter], word);
-                ret = false;
             }
 
-            counter = ++counter;
-            return ret;
+            Counter = ++Counter;
         }
 
         public void init()
