@@ -72,14 +72,44 @@
                 </TextBox.Style>
             </TextBox>
         </Grid>
-        <StackPanel Visibility="{Binding Path=PlayerHasWon, Converter={StaticResource BtoV}}" Grid.Row="2">
+        <Grid
+            Grid.Row="2"
+            MaxWidth="450">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MyMainWindow, Path=DataContext.PlayerHasWon}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock 
+                Text="YOU" 
+                FontSize="52" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                Foreground="White" 
+                FontWeight="Black"/>
             <Image 
-                Margin="0,0,0,0"
-                Width="160"
+                Grid.Column="1"
                 Source="pack://application:,,,/MKUltra;component//Resources/Trophy2.png" 
                 Stretch="Uniform"/>
-            <TextBlock x:Name="youWonText" Text="YOU WON!!!!" FontSize="52" HorizontalAlignment="Center" Foreground="White" FontWeight="Black"/>
-        </StackPanel>
+            <TextBlock 
+                Grid.Column="2"
+                Text="WON" 
+                FontSize="52" 
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" 
+                Foreground="White" 
+                FontWeight="Black"/>
+        </Grid>
         <views:Statistics 
             VerticalAlignment="Center" 
             DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}"
