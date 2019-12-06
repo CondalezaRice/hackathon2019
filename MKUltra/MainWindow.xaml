@@ -34,11 +34,11 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </views:StartMenu.Style>-->
-        </views:StartMenu>
-        
-        <StackPanel Grid.Row="1">
-            <!--<StackPanel.Style>
+            </StackPanel.Style>
+            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" VerticalAlignment="Center" Loaded="StartMenu_Loaded" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
@@ -98,8 +98,9 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </views:Statistics.Style>
-        </views:Statistics>
+            </StackPanel.Style>
+            <views:Statistics VerticalAlignment="Center" />
+        </StackPanel>
 
         <Button 
             Width="200" 
