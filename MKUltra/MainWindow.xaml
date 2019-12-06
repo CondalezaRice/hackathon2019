@@ -74,5 +74,26 @@
                 </controls:TypingGameDisplay.Style>
             </controls:TypingGameDisplay>-->
         </StackPanel>
+        
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StatisticsPanel">
+            <StackPanel.Style>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=TwoWay, ElementName=MyMainWindow}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=TwoWay, ElementName=MyMainWindow}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <views:Statistics DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <Button Width="200" Height="50" FontSize="24" Command="{Binding Path=DataContext.ToggleDisplayStatisticsCommand, ElementName=MyMainWindow}" Content="Statitistics Test" />
+        
+
     </StackPanel>
 </Window>

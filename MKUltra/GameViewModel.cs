@@ -95,11 +95,25 @@ namespace MKUltra
             set => SetProperty(ref gameHasStarted, value);
         }
 
+        private bool _isDisplayingStatistics = false;
+        public bool IsDisplayingStatistics
+        {
+            get => _isDisplayingStatistics;
+            set => SetProperty(ref _isDisplayingStatistics, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
             get => togglePlayerHasWon;
             set => SetProperty(ref togglePlayerHasWon, value);
+        }
+
+        private ICommand _toggleDisplayStatisticsCommand;
+        public ICommand ToggleDisplayStatisticsCommand
+        {
+            get => _toggleDisplayStatisticsCommand;
+            set => SetProperty(ref _toggleDisplayStatisticsCommand, value);
         }
 
         private ICommand startGame;
@@ -125,8 +139,9 @@ namespace MKUltra
 
         public GameViewModel()
         {
-           TogglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
+            TogglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
             StartGame = new DelegateCommand(OnStartGame, null);
+            ToggleDisplayStatisticsCommand = new DelegateCommand(OnToggleDisplayStatistics, null);
 
             LessonsCollection = new ObservableCollection<Lesson>();
             cvs = new CollectionViewSource();
@@ -148,6 +163,11 @@ namespace MKUltra
         private void OnStartGame(object o)
         {
             GameHasStarted = true;
+        }
+
+        private void OnToggleDisplayStatistics (object o)
+        {
+            IsDisplayingStatistics = !IsDisplayingStatistics;
         }
     }
 }

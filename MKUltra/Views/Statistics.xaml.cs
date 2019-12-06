@@ -18,7 +18,7 @@ namespace MKUltra.Views
     /// <summary>
     /// Interaction logic for Statistics.xaml
     /// </summary>
-    public partial class Statistics : Page
+    public partial class Statistics : UserControl
     {
         public Statistics()
         {
