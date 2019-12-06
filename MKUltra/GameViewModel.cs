@@ -212,6 +212,13 @@ namespace MKUltra
 
         private void OnStartGame(object o)
         {
+            if (GameHasStarted)
+            {
+                GameHasStarted = false;
+                SelectedDifficulty = null;
+                return;
+            }
+
             Console.WriteLine("Difficulty: " + SelectedDifficulty);
             if (SelectedDifficulty == "Baby")
             {
