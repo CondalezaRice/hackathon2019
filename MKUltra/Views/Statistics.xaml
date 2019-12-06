@@ -41,35 +41,35 @@
             <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="White" Text="Statistics" />
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
                 <TextBlock Text="Correct Characters Typed: " Foreground="White" />
-                <TextBlock Text="{Binding Path=CharactersCorrect}" Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.CharactersCorrect}" Foreground="White" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
                 <TextBlock Text="Incorrect Characters Typed: " Foreground="White" />
-                <TextBlock Text="{Binding Path=CharactersIncorrect}" Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.CharactersIncorrect}" Foreground="White" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
                 <TextBlock Text="Total Characters Typed: " Foreground="White" />
-                <TextBlock Text="{Binding Path=TotalCharactersTyped}" Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.TotalCharactersTyped}" Foreground="White" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4">
                 <TextBlock Text="Total Words Typed: " Foreground="White" />
-                <TextBlock Text="{Binding Path=TotalWords}" Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.TotalWords}" Foreground="White" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="5">
               <TextBlock Text="Percentage Correct: " Foreground="White" />
-              <TextBlock Text="{Binding Path=Percentage_correct}" Foreground="White" />
+              <TextBlock Text="{Binding Path=SingleGameStatistics.Percentage_correct}" Foreground="White" />
               <TextBlock Text="%" Foreground="White" />
             </StackPanel>
           
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="6">
               <TextBlock Text="Current Combo: " Foreground="White" />
-              <TextBlock Text="{Binding Path=Combo}" Foreground="White" />
-              <TextBlock Text="{Binding Path=Combo_Message}" Foreground="White" />
+              <TextBlock Text="{Binding Path=SingleGameStatistics.Combo}" Foreground="White" />
+              <TextBlock Text="{Binding Path=SingleGameStatistics.Combo_Message}" Foreground="White" />
             </StackPanel>
 
           <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="7">
             <TextBlock Text="Time Elapsed: " Foreground="White" />
-                <TextBlock Text="{Binding Path=TotalSecondsPlayed}" Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.TotalSecondsPlayed}" Foreground="White" />
                 <TextBlock Text=" seconds" Foreground="White" />
             </StackPanel>
             
@@ -82,25 +82,17 @@
             </StackPanel>
             <!--Cumulative stats column stop-->
 
-
-
-
-
-
-
-
-
           <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="1">
             <TextBlock Text="Total Games: " Foreground="White" />
-            <TextBlock Text="{Binding Path=TotalGamesPlayed}" Foreground="White" />
+            <TextBlock Text="{Binding Path=CumulativeStatistics.TotalGamesPlayed}" Foreground="White" />
           </StackPanel>
           <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
             <TextBlock Text="Games Won: " Foreground="White" />
-            <TextBlock Text="{Binding Path=GamesWon}" Foreground="White" />
+            <TextBlock Text="{Binding Path=CumulativeStatistics.GamesWon}" Foreground="White" />
           </StackPanel>
           <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="3">
             <TextBlock Text="Games Lost: " Foreground="White" />
-            <TextBlock Text="{Binding Path=GamesLost}" Foreground="White" />
+            <TextBlock Text="{Binding Path=CumulativeStatistics.GamesLost}" Foreground="White" />
           </StackPanel>
         </Grid>
     </Grid>
