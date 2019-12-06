@@ -205,6 +205,7 @@ namespace MKUltra
             if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
             {
                 gvm.PlayerHasWon = true;
+                _isChallengeEnded = true;
                 // cumulative update stats
                 ++gvm.CumulativeStatistics.GamesWon;
                 ++gvm.CumulativeStatistics.TotalGamesPlayed;

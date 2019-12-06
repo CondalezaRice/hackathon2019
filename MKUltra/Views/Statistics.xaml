@@ -74,7 +74,7 @@
             </StackPanel>
             
             <!--Timer column start-->
-            <local:DigitalTimer Grid.Column="1" Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <local:DigitalTimer DataContext="{Binding Path=SingleGameStatistics}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <!--Timer column stop-->
             
             <!--Cumulative stats column start-->
