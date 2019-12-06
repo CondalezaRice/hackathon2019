@@ -89,6 +89,7 @@ namespace MKUltra
             }
             else
             {
+                UpdateStatisticsOnCharacterTyped(false, e.Text);
                 e.Handled = true;
             }
 
