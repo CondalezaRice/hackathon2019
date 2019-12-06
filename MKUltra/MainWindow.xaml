@@ -25,29 +25,9 @@
             DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" 
             VerticalAlignment="Center" 
             Loaded="StartMenu_Loaded">
-            <!--<views:StartMenu.Style>
-                <Style TargetType="{x:Type views:StartMenu}">
-                    <Setter Property="Visibility" Value="Visible"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>
-            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" VerticalAlignment="Center" Loaded="StartMenu_Loaded" />
-        </StackPanel>
-        <StackPanel>
-            <StackPanel.Style>
-                <Style TargetType="{x:Type StackPanel}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>-->
+        </views:StartMenu>
+
+        <StackPanel Grid.Row="1">
             <ListBox
                 SelectionMode="Single"
                 x:Name="lessonsBox"
@@ -98,9 +78,8 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </StackPanel.Style>
-            <views:Statistics VerticalAlignment="Center" />
-        </StackPanel>
+            </views:Statistics.Style>
+        </views:Statistics>
 
         <Button 
             Width="200" 
