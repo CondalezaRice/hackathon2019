@@ -14,6 +14,14 @@
         WindowStyle="SingleBorderWindow" Background="#1C2444"
         Loaded="MyMainWindow_Loaded">
     <Grid>
+        <Grid.Background>
+            <ImageBrush Opacity=".1" AlignmentX="Right" AlignmentY="Bottom" Stretch="Uniform" ImageSource="pack://application:,,,/MKUltra;component/Resources/eagle.png"/>
+            <!--<Image 
+                Margin="0,0,20,0"
+                    Width="160"
+                    Source="pack://application:,,,/MKUltra;component//Resources/TeamUSALogo.png" 
+                    Stretch="Uniform"/>-->
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
