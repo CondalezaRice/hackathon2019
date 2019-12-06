@@ -201,10 +201,20 @@ namespace MKUltra
                 gvm.SingleGameStatistics.Percentage_correct = 0;
             }
             
-
+            //End of game cumulative updating
             if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
             {
                 gvm.PlayerHasWon = true;
+                // cumulative update stats
+                ++gvm.CumulativeStatistics.GamesWon;
+                ++gvm.CumulativeStatistics.TotalGamesPlayed;
+            }
+            else if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
+            {
+                gvm.PlayerHasWon = false;
+                // cumulative update stats
+                ++gvm.CumulativeStatistics.GamesLost;
+                ++gvm.CumulativeStatistics.TotalGamesPlayed;
             }
 
         }

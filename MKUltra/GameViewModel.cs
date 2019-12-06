@@ -126,6 +126,13 @@ namespace MKUltra
             set => SetProperty(ref _singleGameStatistics, value);
         }
 
+        private CumulativeStatistics _cumulativeStatistics = new CumulativeStatistics();
+        public CumulativeStatistics CumulativeStatistics
+        {
+            get => _cumulativeStatistics;
+            set => SetProperty(ref _cumulativeStatistics, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
@@ -227,6 +234,7 @@ namespace MKUltra
                 SelectedDifficulty = null;
                 PlayerHasWon = false;
                 UserInputTextBox.Clear();
+                ClearCurrentGameStats();
                 return;
             }
 
@@ -259,6 +267,11 @@ namespace MKUltra
         private void OnToggleDisplayStatistics (object o)
         {
             IsDisplayingStatistics = !IsDisplayingStatistics;
+        }
+
+        private void ClearCurrentGameStats()
+        {
+            SingleGameStatistics = new SingleGameStatistics();
         }
     }
 }
