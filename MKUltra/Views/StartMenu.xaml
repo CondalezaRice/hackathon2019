@@ -5,19 +5,66 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MKUltra.Views"
       xmlns:controls="clr-namespace:MKUltra.UI.Controls"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      mc:Ignorable="d" >
 
-    <Grid>
-        <StackPanel Margin="0,0,0,32">
-            <StackPanel HorizontalAlignment="Left" Margin="5,5,0,0" Orientation="Horizontal">
-                <Image Source="/Resources/TeamUSALogo.png" Width="300" Margin="0,0,0,0" />
-            </StackPanel>
-            <Grid>
-                <TextBlock Margin="300,-420,0,0" HorizontalAlignment="Center" Foreground="White" FontSize="42">OFFICIAL TYPE TRAINER</TextBlock>
-            </Grid>
-            <controls:example_pickChallenge Width="400" Margin="300,-350,0,40" />
-            <Button Width="200" Height="50" Background ="White" Margin ="300,-400,0,0" FontSize="30" Command="{Binding StartGame}">START</Button>
+    <WrapPanel Orientation="Horizontal">
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image 
+                Margin="0,0,20,0"
+                    Width="160"
+                    Source="pack://application:,,,/MKUltra;component//Resources/TeamUSALogo.png" 
+                    Stretch="Uniform"/>
+            <TextBlock  
+                Grid.Column="1"
+                    HorizontalAlignment="Left" 
+                    Foreground="White" 
+                    FontSize="40"
+                    VerticalAlignment="Top"
+                    LineHeight="52"
+                    Margin="0,0,0,20"
+                    LineStackingStrategy="BlockLineHeight"
+                    FontWeight="Black"
+                    Text="OFFICIAL&#10;TYPE&#10;TRAINER"/>
+        </Grid>
+        <StackPanel 
+            Grid.Column="1"
+            Orientation="Vertical" 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top" 
+            Margin="20,32,20,20">
+            <ComboBox 
+                x:Name="comboBox" 
+                HorizontalAlignment="Center" 
+                Width="200"
+                Height="50"
+                Margin="0,0,0,12"
+                IsEditable="True"
+                IsReadOnly="True"
+                Text="DIFFICULTY"
+                TextElement.FontWeight="Bold"
+                TextElement.FontSize="26"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center">
+                <ComboBoxItem Content="Easy" HorizontalAlignment="Left" Width="200"/>
+                <ComboBoxItem Content="Medium" HorizontalAlignment="Left" Width="200"/>
+                <ComboBoxItem Content="Hard" HorizontalAlignment="Left" Width="200"/>
+            </ComboBox>
+            <Button 
+                Width="200" 
+                Height="50" 
+                Background ="White" 
+                FontSize="30" 
+                Command="{Binding StartGame}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock 
+                        Text="START"
+                        FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
-    </Grid>
+    </WrapPanel>
 </UserControl>

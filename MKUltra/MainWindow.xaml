@@ -12,35 +12,46 @@
         Title="Team USA Type Trainer"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow" Background="#1C2444">
-    <StackPanel Orientation="Vertical">
-        
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StartMenuPanel">
-            <StackPanel.Style>
-                <Style TargetType="{x:Type StackPanel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <views:StartMenu 
+            MaxWidth="700"
+            Grid.Row="0"
+            DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" 
+            VerticalAlignment="Center" 
+            Loaded="StartMenu_Loaded">
+            <!--<views:StartMenu.Style>
+                <Style TargetType="{x:Type views:StartMenu}">
                     <Setter Property="Visibility" Value="Visible"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
-                            <Setter Property="Visibility" Value="Hidden"/>
+                            <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </StackPanel.Style>
-            <views:StartMenu DataContext="{Binding ElementName=MyMainWindow, Path=DataContext}" VerticalAlignment="Center" Loaded="StartMenu_Loaded" />
-        </StackPanel>
-        <StackPanel>
-            <StackPanel.Style>
+            </views:StartMenu.Style>-->
+        </views:StartMenu>
+        
+        <StackPanel Grid.Row="1">
+            <!--<StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
-                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </StackPanel.Style>
+            </StackPanel.Style>-->
             <ListBox
                 SelectionMode="Single"
                 x:Name="lessonsBox"
+                Margin="20"
                 IsSynchronizedWithCurrentItem="True"
                 SelectionChanged="lessonsBox_SelectionChanged"
                 ItemsSource="{Binding LessonsCollectionView, Mode=OneWay}">
@@ -53,7 +64,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Grid Background="White">
+            <Grid Background="White" Margin="20">
                 <Border BorderBrush="Black" BorderThickness="1" Margin="1" Padding="4,0">
                     <Grid>
                         <TextBox TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding ElementName=lessonsBox, Path=SelectedItem.LessonString, Mode=OneWay}" FontSize="18" FontWeight="Bold" Opacity=".5" IsReadOnly="True" IsReadOnlyCaretVisible="False" />
@@ -70,39 +81,35 @@
                 </Border>
             </Grid>
             <TextBlock x:Name="youWonText" Text="YOU WON!!!!" FontSize="52" HorizontalAlignment="Center" Foreground="White" Visibility="Collapsed" FontWeight="Black"/>
-            <!--<controls:TypingGameDisplay>
-                <controls:TypingGameDisplay.Style>
-                    <Style TargetType="{x:Type controls:TypingGameDisplay}">
-                        <Setter Property="Visibility" Value="Hidden"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding GameHasStarted, Mode=OneWay}" Value="true">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </controls:TypingGameDisplay.Style>
-            </controls:TypingGameDisplay>-->
         </StackPanel>
-        
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Name="StatisticsPanel">
-            <StackPanel.Style>
-                <Style TargetType="{x:Type StackPanel}">
+
+        <views:Statistics 
+            VerticalAlignment="Center" 
+            Grid.Row="2">
+            <views:Statistics.Style>
+                <Style TargetType="{x:Type views:Statistics}">
                     <Setter Property="Visibility" Value="Visible"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=TwoWay, ElementName=MyMainWindow}" Value="true">
+                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=OneWay, ElementName=MyMainWindow}" Value="true">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=TwoWay, ElementName=MyMainWindow}" Value="false">
+                        <DataTrigger Binding="{Binding Path=DataContext.IsDisplayingStatistics, Mode=OneWay, ElementName=MyMainWindow}" Value="false">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </StackPanel.Style>
-            <views:Statistics VerticalAlignment="Center" />
-        </StackPanel>
+            </views:Statistics.Style>
+        </views:Statistics>
 
-        <Button Width="200" Height="50" FontSize="24" Command="{Binding Path=DataContext.ToggleDisplayStatisticsCommand, ElementName=MyMainWindow}" Content="Statitistics Test" />
+        <Button 
+            Width="200" 
+            Height="50" 
+            FontSize="24" 
+            Grid.Row="2"
+            Visibility="Collapsed"
+            Command="{Binding Path=DataContext.ToggleDisplayStatisticsCommand, ElementName=MyMainWindow}" 
+            Content="Statitistics Test" />
         
 
-    </StackPanel>
+    </Grid>
 </Window>
