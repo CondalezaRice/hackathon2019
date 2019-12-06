@@ -132,17 +132,22 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.CharactersCorrect++;
 
-                if ( lastKey.Equals(Key.Space.ToString() ) || lastKey.Equals(Key.OemPeriod.ToString() ) || lastKey.Equals(Key.OemComma.ToString() ) ) //If character was a space, comma or period then increment total words
+                if ( lastKey.Equals(Key.Space.ToString() ) || lastKey.Equals(Key.OemPeriod.ToString() ) ) //If character was a space, comma or period then increment total words
                 {
                     gvm.SingleGameStatistics.TotalWords++; // do we want to make a serperate counter for punctuation?
                 }
+
+                //update combo score
+                gvm.SingleGameStatistics.Combo++;
             }
             else
             {
                 gvm.SingleGameStatistics.CharactersIncorrect++;
+                //set combo score back to 0
+                gvm.SingleGameStatistics.Combo = 0;
             }
 
-            // update our values for percentage correct
+            // update percentage correct
             double new_percentage_correct = ((gvm.SingleGameStatistics.CharactersIncorrect / gvm.SingleGameStatistics.CharactersCorrect) - 1) * -100;
             if (new_percentage_correct >= 0)
             {
@@ -152,6 +157,7 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.Percentage_correct = 0;
             }
+            
 
         }
 
