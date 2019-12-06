@@ -7,6 +7,55 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
+    //This is for you Parker
+    public class Text_Handler
+    {
+        //Make instance of text_handler and call init()
+        //Call
+        // is word correct
+        //  pass in word and lesson words
+        //  check if they are equal
+        //  if not - return a false bool
+        //  else return true
+        private int counter;
+
+        /*
+        private string word;
+        private string lesson_words;
+
+        public string Word { get => word; set => word = value; }
+        public string Lesson_words { get => Lesson_words; set => Lesson_words = value; }
+        */
+        public int Counter { get => Counter; set => Counter = value; }
+
+        public bool check_word(string word, string lesson_words)
+        {
+            bool ret;
+            //for word in split(' ') lesson_words:
+            string[] lesson_words_list = lesson_words.Split(' ');
+            if (lesson_words_list[counter] == word)
+            {
+                ret = true;
+            }
+
+            else
+            {
+                Console.WriteLine("This is what didn't match");
+                Console.WriteLine(lesson_words_list[counter], word);
+                ret = false;
+            }
+
+            counter = ++counter;
+            return ret;
+        }
+
+        public void init()
+        {
+            Counter = 0;
+        }
+
+    }
+
     public class PlayerModel
     {
     }
