@@ -124,5 +124,10 @@ namespace MKUltra
             gvm.SingleGameStatistics.Percentage_correct = (gvm.SingleGameStatistics.CharactersCorrect / gvm.SingleGameStatistics.CharactersIncorrect) * 100; // so it displays as an int rather than a double
 
         }
+
+        private void StartMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
