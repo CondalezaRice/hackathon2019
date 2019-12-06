@@ -120,5 +120,10 @@ namespace MKUltra
                 gvm.SingleGameStatistics.CharactersIncorrect++;
             }
         }
+
+        private void StartMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
