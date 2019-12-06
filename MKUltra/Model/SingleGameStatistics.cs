@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-    public class SingleGameStatistics : BaseStatistics, INotifyPropertyChanged
+    public class SingleGameStatistics : BaseStatistics
     {
     }
 }

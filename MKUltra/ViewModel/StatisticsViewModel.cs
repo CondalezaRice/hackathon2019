@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MKUltra.ViewModel
 {
     public enum StatisticsType { Cumulative, SingleGame };
-    public class StatisticsViewModel
+    public class StatisticsViewModel : ViewModelBase
     {
         public StatisticsType _statisticsType;
         public StatisticsType StatisticsType
@@ -21,20 +21,6 @@ namespace MKUltra.ViewModel
         public StatisticsViewModel(StatisticsType statisticsType = StatisticsType.SingleGame)
         {
             _statisticsType = statisticsType;
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)
-        {
-            if (!EqualityComparer<T>.Default.Equals(field, newValue))
-            {
-                field = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-            return false;
         }
     }
 }
