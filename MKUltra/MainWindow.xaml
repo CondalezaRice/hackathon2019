@@ -15,7 +15,7 @@
         Loaded="MyMainWindow_Loaded">
     <Grid>
         <Grid.Background>
-            <ImageBrush Opacity=".1" AlignmentX="Right" AlignmentY="Bottom" Stretch="Uniform" ImageSource="pack://application:,,,/MKUltra;component/Resources/eagle.png"/>
+            <ImageBrush  Opacity=".1" AlignmentX="Right" AlignmentY="Bottom" Stretch="Uniform" ImageSource="pack://application:,,,/MKUltra;component/Resources/eagle.png"/>
             <!--<Image 
                 Margin="0,0,20,0"
                     Width="160"
@@ -120,7 +120,7 @@
         </Grid>
         <views:Statistics 
             VerticalAlignment="Center" 
-            DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}"
+            DataContext="{Binding ElementName=MyMainWindow, Mode=OneWay, Path=DataContext.SingleGameStatistics}"
             Grid.Row="3">
             <views:Statistics.Style>
                 <Style TargetType="{x:Type views:Statistics}">

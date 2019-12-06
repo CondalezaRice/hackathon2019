@@ -230,6 +230,9 @@ namespace MKUltra
             // reset the game if the game has already started:
             if (GameHasStarted)
             {
+                CurrentLesson.CurrentIndex = 0;
+                CurrentLesson.TypingHistory = "";
+                CurrentLesson.TypingProgress = "";
                 GameHasStarted = false;
                 SelectedDifficulty = null;
                 PlayerHasWon = false;
