@@ -10,11 +10,12 @@
 
     <Grid>
         <StackPanel Margin="0,0,0,32">
-            <StackPanel HorizontalAlignment="Center" Margin="0,0,0,10" Orientation="Horizontal">
-                <TextBlock Foreground="Blue" FontWeight="Bold" FontSize="36">Typemaster 5001</TextBlock>
-                <Image Source="/Resources/flag.png" Width="75" Margin="20,0,0,0" />
+            <StackPanel HorizontalAlignment="Left" Margin="5,5,0,0" Orientation="Horizontal">
+                <Image Source="/Resources/TeamUSALogo.png" Width="300" Margin="0,0,0,0" />
             </StackPanel>
-            <TextBlock Margin="0,0,0,40" HorizontalAlignment="Center" Foreground="White" FontSize="20">The (un)official trainer of Team USA</TextBlock>
+            <Grid>
+                <TextBlock Margin="300,-420,0,0" HorizontalAlignment="Center" Foreground="White" FontSize="42">OFFICIAL TYPE TRAINER</TextBlock>
+            </Grid>
             <controls:example_pickChallenge Width="260" Margin="0,0,0,40" />
             <Button Width="100" Height="50" FontSize="24" Command="{Binding StartGame}">Start!</Button>
         </StackPanel>
