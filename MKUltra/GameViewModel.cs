@@ -53,6 +53,8 @@ namespace MKUltra
 
     class GameViewModel : ViewModelBase
     {
+        public string challenge_quick = "This is a quick one.";
+
         public string challenge_aerobic = "The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively " +
             "gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. " +
             "The running speed starts slowly, but gets faster each minute after you hear this signal. *aggressive beep* A single lap should " +
@@ -188,6 +190,7 @@ namespace MKUltra
             cvs.Source = LessonsCollection;
             LessonsCollectionView = cvs.View;
 
+            LessonsCollection.Add(new Lesson(challenge_quick, "Quick", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_aerobic, "Fantastic Fitness", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_easy, "Amazing Amazon", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_medium, "Marvelous Microsoft", LessonDifficulty.Medium));

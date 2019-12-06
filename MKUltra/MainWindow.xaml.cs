@@ -35,8 +35,8 @@ namespace MKUltra
         private void UpdateLessonProgress(string lastKey)
         {
             gvm.CurrentLesson.CurrentIndex++;
-            UpdateStatisticsOnCharacterTyped(true, lastKey);
             gvm.CurrentLesson.TypingProgress = gvm.CurrentLesson.LessonString.Substring(0, gvm.CurrentLesson.CurrentIndex);
+            UpdateStatisticsOnCharacterTyped(true, lastKey);
         }
 
         private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -122,11 +122,6 @@ namespace MKUltra
                 });
             }
 
-            else if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
-            {
-                gvm.PlayerHasWon = true;
-            }
-
             gvm.SingleGameStatistics.TotalCharactersTyped++;
             if (isCharacterCorrect)
             {
@@ -158,6 +153,11 @@ namespace MKUltra
                 gvm.SingleGameStatistics.Percentage_correct = 0;
             }
             
+
+            if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
+            {
+                gvm.PlayerHasWon = true;
+            }
 
         }
 
