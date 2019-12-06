@@ -32,6 +32,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="White" Text="Statistics" />
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
@@ -50,19 +51,19 @@
                 <TextBlock Text="Total Words Typed: " Foreground="White" />
                 <TextBlock Text="{Binding Path=TotalWords}" Foreground="White" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="5">
               <TextBlock Text="Percentage Correct: " Foreground="White" />
               <TextBlock Text="{Binding Path=Percentage_correct}" Foreground="White" />
               <TextBlock Text="%" Foreground="White" />
             </StackPanel>
           
-            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="6">
               <TextBlock Text="Current Combo: " Foreground="White" />
               <TextBlock Text="{Binding Path=Combo}" Foreground="White" />
               <TextBlock Text="{Binding Path=Combo_Message}" Foreground="White" />
             </StackPanel>
 
-          <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+          <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="7">
             <TextBlock Text="Time Elapsed: " Foreground="White" />
                 <TextBlock Text="{Binding Path=TotalSecondsPlayed}" Foreground="White" />
                 <TextBlock Text=" seconds" Foreground="White" />
