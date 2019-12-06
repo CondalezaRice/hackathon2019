@@ -213,5 +213,10 @@ namespace MKUltra
         {
 
         }
+
+        private void MyMainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            gvm.UserInputTextBox = UserInputTextBox;
+        }
     }
 }
