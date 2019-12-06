@@ -11,7 +11,8 @@
         x:Name="MyMainWindow"
         Title="Team USA Type Trainer"
         WindowState="Maximized"
-        WindowStyle="SingleBorderWindow" Background="#1C2444">
+        WindowStyle="SingleBorderWindow" Background="#1C2444"
+        Loaded="MyMainWindow_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -49,6 +50,7 @@
                 IsReadOnly="True" 
                 IsReadOnlyCaretVisible="False" />
             <TextBox 
+                x:Name="UserInputTextBox"
                 Background="Transparent" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Stretch" 
@@ -56,7 +58,18 @@
                 FontWeight="Bold" 
                 Foreground="Blue" 
                 PreviewKeyDown="TextBox_PreviewKeyDown"
-                PreviewTextInput="TextBox_PreviewTextInput" />
+                PreviewTextInput="TextBox_PreviewTextInput">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=MyMainWindow, Path=DataContext.PlayerHasWon}" Value="true">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
         </Grid>
 
         <views:Statistics 

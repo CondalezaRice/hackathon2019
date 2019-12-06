@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -102,6 +103,13 @@ namespace MKUltra
         {
             get => gameHasStarted;
             set => SetProperty(ref gameHasStarted, value);
+        }
+
+        private TextBox userInputTextBox;
+        public TextBox UserInputTextBox
+        {
+            get => userInputTextBox;
+            set => SetProperty(ref userInputTextBox, value);
         }
 
         private bool _isDisplayingStatistics = false;
@@ -212,10 +220,13 @@ namespace MKUltra
 
         private void OnStartGame(object o)
         {
+            // reset the game if the game has already started:
             if (GameHasStarted)
             {
                 GameHasStarted = false;
                 SelectedDifficulty = null;
+                PlayerHasWon = false;
+                UserInputTextBox.Clear();
                 return;
             }
 
