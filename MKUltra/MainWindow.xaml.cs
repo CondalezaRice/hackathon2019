@@ -41,10 +41,12 @@ namespace MKUltra
             if (gvm.CurrentLesson == null)
                 return;
 
+            // good space
             if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
             {
                 gvm.CurrentLesson.TypingHistory += " ";
                 UpdateLessonProgress();
+                // Call validation stuff (gmv.statistics_handler.whatever())
             }
             else if (e.Key != Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
             {
