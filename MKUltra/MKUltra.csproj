@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,6 +70,9 @@
       <DependentUpon>TypingGameDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\StatisticsViewModel.cs" />
+    <Compile Include="Views\DigitalTimer.xaml.cs">
+      <DependentUpon>DigitalTimer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
@@ -104,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\MaterialDesignIcons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DigitalTimer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
