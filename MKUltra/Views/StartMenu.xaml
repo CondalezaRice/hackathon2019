@@ -17,7 +17,7 @@
                 <TextBlock Margin="300,-420,0,0" HorizontalAlignment="Center" Foreground="White" FontSize="42">OFFICIAL TYPE TRAINER</TextBlock>
             </Grid>
             <controls:example_pickChallenge Width="400" Margin="300,-350,0,40" />
-            <Button Width="200" Height="75" Background ="White" BorderBrush ="#BC2434" BorderThickness="2" Margin ="300,-350,0,0" FontSize="50" Command="{Binding StartGame}">START</Button>
+            <Button Width="200" Height="50" Background ="White" Margin ="300,-400,0,0" FontSize="30" Command="{Binding StartGame}">START</Button>
         </StackPanel>
     </Grid>
 </UserControl>
