@@ -143,7 +143,7 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.CharactersCorrect++;
 
-                if ( lastKey.Equals(Key.Space.ToString() ) || lastKey.Equals(Key.OemPeriod.ToString() ) ) //If character was a space, comma or period then increment total words
+                if (lastKey.Equals(Key.Space.ToString()) || lastKey.Equals(Key.OemPeriod.ToString())) //If character was a space, comma or period then increment total words
                 {
                     gvm.SingleGameStatistics.TotalWords++; // do we want to make a serperate counter for punctuation?
                 }
@@ -156,6 +156,18 @@ namespace MKUltra
                 {
                     gvm.SingleGameStatistics.Combo_Message = "WOW!! Keep it up!";
                 }
+
+                //sound test
+                if (gvm.SingleGameStatistics.Combo == 15)
+                {
+                    //(new System.Media.SoundPlayer(@"C:\Users\Bryce\Downloads\KVSH-Tokyo-Drift.mp3")).Play();
+                    System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify.wav");
+                    soundPlayer.Play();
+                }
+                if (gvm.SingleGameStatistics.Combo >= 25)
+                {
+                    //do something else cool
+                }
             }
             else
             {
@@ -164,6 +176,8 @@ namespace MKUltra
                 gvm.SingleGameStatistics.Combo = 0;
                 //setting combo message back to nothing because if you lost the combo you are nothing
                 gvm.SingleGameStatistics.Combo_Message = " ";
+                //play the you messed up noise
+                System.Media.SystemSounds.Hand.Play();
             }
 
             // update percentage correct
