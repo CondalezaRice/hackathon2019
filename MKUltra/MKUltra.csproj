@@ -60,6 +60,7 @@
     <Compile Include="Model\CumulativeStatistics.cs" />
     <Compile Include="Model\BaseStatistics.cs" />
     <Compile Include="Model\SingleGameStatistics.cs" />
+    <Compile Include="SecondsToTimeStringConverter.cs" />
     <Compile Include="UI\Controls\example_pickChallenge.xaml.cs">
       <DependentUpon>example_pickChallenge.xaml</DependentUpon>
     </Compile>

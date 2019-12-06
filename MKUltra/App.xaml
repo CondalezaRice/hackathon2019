@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MKUltra;component/UI/IconResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="BtoV" />
+            <local:SecondsToTimeStringConverter x:Key="SecondsToTimeStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

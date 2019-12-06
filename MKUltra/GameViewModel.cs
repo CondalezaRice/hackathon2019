@@ -272,6 +272,7 @@ namespace MKUltra
         private void ClearCurrentGameStats()
         {
             SingleGameStatistics = new SingleGameStatistics();
+            PlayerHasWon = false;
         }
     }
 }
