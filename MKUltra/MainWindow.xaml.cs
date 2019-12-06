@@ -123,8 +123,13 @@ namespace MKUltra
 
         private void UpdateStatisticsOnCharacterTyped(bool isCharacterCorrect, string lastKey)
         {
-            //Console.WriteLine(Environment.CurrentDirectory);
-            System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(@"team_america.wav");
+            // Console.WriteLine(Environment.CurrentDirectory);
+            string Path = Environment.CurrentDirectory;
+            Path = Path.Remove(Path.Length-9);
+            Path = Path + "team_america.wav";
+            Console.WriteLine(Path);
+
+            System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(Path);
 
             if (!_isChallengeStarted && !_isChallengeEnded)
             {

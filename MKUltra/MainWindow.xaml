@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -71,11 +72,18 @@
                 </TextBox.Style>
             </TextBox>
         </Grid>
-
+        <StackPanel Visibility="{Binding Path=PlayerHasWon, Converter={StaticResource BtoV}}" Grid.Row="2">
+            <Image 
+                Margin="0,0,0,0"
+                Width="160"
+                Source="pack://application:,,,/MKUltra;component//Resources/Trophy2.png" 
+                Stretch="Uniform"/>
+            <TextBlock x:Name="youWonText" Text="YOU WON!!!!" FontSize="52" HorizontalAlignment="Center" Foreground="White" FontWeight="Black"/>
+        </StackPanel>
         <views:Statistics 
             VerticalAlignment="Center" 
             DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}"
-            Grid.Row="2">
+            Grid.Row="3">
             <views:Statistics.Style>
                 <Style TargetType="{x:Type views:Statistics}">
                     <Setter Property="Visibility" Value="Collapsed"/>

@@ -152,5 +152,11 @@
   <ItemGroup>
     <Resource Include="Resources\flag.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trophy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Trophy2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
