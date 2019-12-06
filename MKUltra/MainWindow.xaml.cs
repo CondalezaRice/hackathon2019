@@ -143,7 +143,7 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.CharactersCorrect++;
 
-                if (lastKey.Equals(Key.Space.ToString()) || lastKey.Equals(Key.OemPeriod.ToString())) //If character was a space, comma or period then increment total words
+                if ( lastKey.Equals(Key.Space.ToString() ) || lastKey.Equals(".")) //If character was a space or period then increment total words
                 {
                     gvm.SingleGameStatistics.TotalWords++; // do we want to make a serperate counter for punctuation?
                 }

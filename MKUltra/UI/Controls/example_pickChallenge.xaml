@@ -19,14 +19,7 @@
         <StackPanel>
 
             <Border Margin="10" Padding="10, 10, 10, 10">
-                <StackPanel>
-                    <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="18" Margin="0,0,0,10">DIFFICULTY SELECT</TextBlock>
-                    <ComboBox x:Name="comboBox" HorizontalAlignment="Center" Width="200">
-                        <ComboBoxItem Content="Easy (0-74 words)" HorizontalAlignment="Left" Width="200"/>
-                        <ComboBoxItem Content="Medium (75-149 words)" HorizontalAlignment="Left" Width="200"/>
-                        <ComboBoxItem Content="Hard (150+ words)" HorizontalAlignment="Left" Width="200"/>
-                    </ComboBox>
-                </StackPanel>
+                
             </Border>
 
         </StackPanel>
