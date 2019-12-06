@@ -138,7 +138,15 @@ namespace MKUltra
             }
 
             // update our values for percentage correct
-            gvm.SingleGameStatistics.Percentage_correct = (gvm.SingleGameStatistics.CharactersCorrect / gvm.SingleGameStatistics.CharactersIncorrect) * 100; // so it displays as an int rather than a double
+            double new_percentage_correct = ((gvm.SingleGameStatistics.CharactersIncorrect / gvm.SingleGameStatistics.CharactersCorrect) - 1) * -100;
+            if (new_percentage_correct >= 0)
+            {
+                gvm.SingleGameStatistics.Percentage_correct = new_percentage_correct;
+            }
+            else
+            {
+                gvm.SingleGameStatistics.Percentage_correct = 0;
+            }
 
             if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
             {
