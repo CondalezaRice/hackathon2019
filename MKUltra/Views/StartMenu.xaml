@@ -55,6 +55,16 @@
                 <ComboBoxItem Content="Easy" HorizontalAlignment="Left" Width="200"/>
                 <ComboBoxItem Content="Medium" HorizontalAlignment="Left" Width="200"/>
                 <ComboBoxItem Content="Hard" HorizontalAlignment="Left" Width="200"/>
+                <ComboBox.Style>
+                    <Style TargetType="{x:Type ComboBox}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=DataContext.GameHasStarted, Mode=OneWay, ElementName=StartMenuControl}" Value="true">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Style>
             </ComboBox>
             <Button 
                 Width="200" 
@@ -65,18 +75,34 @@
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="IsEnabled" Value="True"/>
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Text="START"
+                                        FontWeight="Bold"/>
+                                </StackPanel>
+                            </Setter.Value>
+                        </Setter>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ElementName=StartMenuControl, Path=DataContext.SelectedDifficulty}" Value="{x:Null}">
                                 <Setter Property="IsEnabled" Value="False"/>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=DataContext.GameHasStarted, Mode=OneWay, ElementName=StartMenuControl}" Value="true">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock 
+                                                Text="STOP"
+                                                FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock 
-                        Text="START"
-                        FontWeight="Bold"/>
-                </StackPanel>
+                
             </Button>
         </StackPanel>
     </WrapPanel>
