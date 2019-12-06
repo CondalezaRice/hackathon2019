@@ -22,6 +22,8 @@ namespace MKUltra
     public partial class MainWindow : Window
     {
         GameViewModel gvm = new GameViewModel();
+        private bool _isChallengeStarted = false;
+        private bool _isChallengeEnded = false;
 
         public MainWindow()
         {
@@ -105,6 +107,26 @@ namespace MKUltra
 
         private void UpdateStatisticsOnCharacterTyped(bool isCharacterCorrect, string lastKey)
         {
+            if (!_isChallengeStarted && !_isChallengeEnded)
+            {
+                _isChallengeStarted = true;
+
+                //Start timer
+                Task.Run(async () =>
+                {
+                    while (!gvm.PlayerHasWon)
+                    {
+                        await Task.Delay(1000);
+                        gvm.SingleGameStatistics.TotalSecondsPlayed++;
+                    }
+                });
+            }
+
+            else if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
+            {
+                gvm.PlayerHasWon = true;
+            }
+
             gvm.SingleGameStatistics.TotalCharactersTyped++;
             if (isCharacterCorrect)
             {
