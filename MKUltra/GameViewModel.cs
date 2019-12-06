@@ -53,6 +53,13 @@ namespace MKUltra
 
     class GameViewModel : ViewModelBase
     {
+        public string challenge_aerobic = "The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively " +
+            "gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. " +
+            "The running speed starts slowly, but gets faster each minute after you hear this signal. *aggressive beep* A single lap should " +
+            "be completed each time you hear this sound. ding Remember to run in a straight line, and run as long as possible. " +
+            "The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word " +
+            "start. On your mark, get ready, start.";
+
         public string challenge_easy = "Amazon.com, Inc. is an America multinational technology company based in Seattle," +
             "Washington, that focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence." +
             "It is considered one of the Big Four technology companies along with Google, Apple, and Facebook.";
@@ -95,6 +102,13 @@ namespace MKUltra
             set => SetProperty(ref gameHasStarted, value);
         }
 
+        private bool _isDisplayingStatistics = false;
+        public bool IsDisplayingStatistics
+        {
+            get => _isDisplayingStatistics;
+            set => SetProperty(ref _isDisplayingStatistics, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
@@ -102,11 +116,25 @@ namespace MKUltra
             set => SetProperty(ref togglePlayerHasWon, value);
         }
 
+        private ICommand _toggleDisplayStatisticsCommand;
+        public ICommand ToggleDisplayStatisticsCommand
+        {
+            get => _toggleDisplayStatisticsCommand;
+            set => SetProperty(ref _toggleDisplayStatisticsCommand, value);
+        }
+
         private ICommand startGame;
         public ICommand StartGame
         {
             get => startGame;
             set => SetProperty(ref startGame, value);
+        }
+
+        private string userInput;
+        public string UserInput
+        {
+            get => userInput;
+            set => SetProperty(ref userInput, value);
         }
 
         private ObservableCollection<Lesson> lessonsCollection;
@@ -123,17 +151,30 @@ namespace MKUltra
             set => SetProperty(ref playersCollection, value);
         }
 
+        /// <summary>
+        /// Author PTR: Everytime there is a keystroke, the code needs to reference the current lesson to track
+        /// user progress. We could do this by casting the CollectionView.CurrentItem, but casting is expensive, so 
+        /// just set the CurrentLesson whenever the user makes a lesson selection.
+        /// </summary>
+        private Lesson currentLesson;
+        public Lesson CurrentLesson
+        {
+            get => currentLesson;
+            set => SetProperty(ref currentLesson, value);
+        }
+
         public GameViewModel()
         {
-           TogglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
+            TogglePlayerHasWon = new DelegateCommand(OnTogglePlayerHasWon, null);
             StartGame = new DelegateCommand(OnStartGame, null);
+            ToggleDisplayStatisticsCommand = new DelegateCommand(OnToggleDisplayStatistics, null);
 
             LessonsCollection = new ObservableCollection<Lesson>();
             cvs = new CollectionViewSource();
             cvs.Source = LessonsCollection;
             LessonsCollectionView = cvs.View;
 
-            LessonsCollection.Add(new Lesson("Testing!", "Super Simple", LessonDifficulty.Easy));
+            LessonsCollection.Add(new Lesson(challenge_aerobic, "Fantastic Fitness", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_easy, "Amazing Amazon", LessonDifficulty.Easy));
             LessonsCollection.Add(new Lesson(challenge_medium, "Marvelous Microsoft", LessonDifficulty.Medium));
             LessonsCollection.Add(new Lesson(challenge_hard, "Fantastic Facebook", LessonDifficulty.Hard));
@@ -148,6 +189,11 @@ namespace MKUltra
         private void OnStartGame(object o)
         {
             GameHasStarted = true;
+        }
+
+        private void OnToggleDisplayStatistics (object o)
+        {
+            IsDisplayingStatistics = !IsDisplayingStatistics;
         }
     }
 }

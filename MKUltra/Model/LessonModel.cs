@@ -28,6 +28,8 @@ namespace MKUltra.Model
         }
         public LessonDifficulty Difficulty { get; set; }
         public string LessonName { get; set; }
+        public string TypingHistory { get; set; }
+        public string TypingProgress { get; set; }
         public int CurrentIndex { get; set; }
         public Lesson(string content)
         {
@@ -39,6 +41,8 @@ namespace MKUltra.Model
             Difficulty = ld;
             LessonName = name;
         }
+
+        public Lesson() { }
     }
 
     //LessonHistory in progress, it is meant to help store keystrokes for playback purposes 

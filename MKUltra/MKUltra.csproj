@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CumulativeStatistics.cs" />
+    <Compile Include="Model\BaseStatistics.cs" />
+    <Compile Include="Model\SingleGameStatistics.cs" />
     <Compile Include="UI\Controls\example_pickChallenge.xaml.cs">
       <DependentUpon>example_pickChallenge.xaml</DependentUpon>
     </Compile>
@@ -64,6 +67,7 @@
     <Compile Include="UI\Controls\TypingGameDisplay.xaml.cs">
       <DependentUpon>TypingGameDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\StatisticsViewModel.cs" />
     <Compile Include="Views\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>

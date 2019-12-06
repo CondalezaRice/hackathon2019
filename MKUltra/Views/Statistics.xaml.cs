@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MKUltra.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +19,12 @@ namespace MKUltra.Views
     /// <summary>
     /// Interaction logic for Statistics.xaml
     /// </summary>
-    public partial class Statistics : Page
+    public partial class Statistics : UserControl
     {
         public Statistics()
         {
+            //TODO: Pass in the statistics type (cumulative vs. single game)
+            this.DataContext = new StatisticsViewModel();
             InitializeComponent();
         }
     }
