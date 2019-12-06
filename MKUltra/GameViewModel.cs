@@ -151,6 +151,13 @@ namespace MKUltra
             set => SetProperty(ref playersCollection, value);
         }
 
+        private Statistics_Handler statistics_handler = new Statistics_Handler();
+        public Statistics_Handler Statistics_handler
+        {
+            get => statistics_handler;
+            set => SetProperty(ref statistics_handler, value);
+        }
+
         /// <summary>
         /// Author PTR: Everytime there is a keystroke, the code needs to reference the current lesson to track
         /// user progress. We could do this by casting the CollectionView.CurrentItem, but casting is expensive, so 
