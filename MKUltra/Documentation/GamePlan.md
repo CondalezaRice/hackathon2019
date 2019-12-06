@@ -19,3 +19,25 @@ As it sounds, add more later
 - Score
 - Time
 - Acheivements as part of statistics
+
+##Properties (cumulative):
+-Games played
+-Games won
+-Games lost
+-Average correct %
+-Average words per minute
+-Total characters typed
+-Total time played
+
+##Properties (current challenge):
+-Characters correct
+-Characters incorrect
+-Total words typed
+-Time played
+-Use time and total words to calculate words per minute
+
+#Maybe?
+-Save each game's detailed statistics
+-Achievements
+-High scores
+
