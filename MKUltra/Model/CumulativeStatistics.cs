@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MKUltra.Model
 {
-    public class CumulativeStatistics : SingleGameStatistics, INotifyPropertyChanged
+    public class CumulativeStatistics : BaseStatistics, INotifyPropertyChanged
     {
         private int _totalGamesPlayed = 0;
         public int TotalGamesPlayed
