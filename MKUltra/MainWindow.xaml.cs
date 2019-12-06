@@ -57,15 +57,18 @@ namespace MKUltra
                         gvm.CurrentLesson.TypingHistory += e.Key.ToString()[0];
                     }
                 }
+                //Incorrect character
                 e.Handled = true;
             }
             else if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() != " ")
             {
                 gvm.CurrentLesson.TypingHistory += " ";
+                //Incorrect character
                 e.Handled = true;
             }
             else if (e.Key == Key.Back || e.Key == Key.Delete)
             {
+                //Incorrect character
                 e.Handled = true;
             }
         }

@@ -109,6 +109,13 @@ namespace MKUltra
             set => SetProperty(ref _isDisplayingStatistics, value);
         }
 
+        private SingleGameStatistics _singleGameStatistics = new SingleGameStatistics();
+        public SingleGameStatistics SingleGameStatistics
+        {
+            get => _singleGameStatistics;
+            set => SetProperty(ref _singleGameStatistics, value);
+        }
+
         private ICommand togglePlayerHasWon;
         public ICommand TogglePlayerHasWon
         {
@@ -186,6 +193,12 @@ namespace MKUltra
             LessonsCollection.Add(new Lesson(challenge_medium, "Marvelous Microsoft", LessonDifficulty.Medium));
             LessonsCollection.Add(new Lesson(challenge_hard, "Fantastic Facebook", LessonDifficulty.Hard));
 
+            //Testing stats; these should be set in various event handlers
+            _singleGameStatistics.CharactersCorrect = 750;
+            _singleGameStatistics.CharactersIncorrect = 150;
+            _singleGameStatistics.TotalCharactersTyped = 900;
+            _singleGameStatistics.TotalSecondsPlayed = 3500;
+            _singleGameStatistics.TotalWords = 300;
         }
 
         private void OnTogglePlayerHasWon(object o)

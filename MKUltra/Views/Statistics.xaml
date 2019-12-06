@@ -9,18 +9,31 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition />
-            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
             <RowDefinition />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-            <TextBlock Text="Mode: " Foreground="White" />
-            <TextBlock Text="{Binding Path=StatisticsType}" Foreground="White" />
-        </StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="White" Text="Statistics" />
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                <TextBlock Text="Total Characters Typed: " Foreground="White" />
+                <TextBlock Text="{Binding Path=TotalCharactersTyped}" Foreground="White" />
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </UserControl>
