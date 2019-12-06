@@ -43,6 +43,7 @@ namespace MKUltra
 
             if (e.Key == Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
             {
+                gvm.CurrentLesson.TypingHistory += " ";
                 UpdateLessonProgress();
             }
             else if (e.Key != Key.Space && gvm.CurrentLesson.LessonString[gvm.CurrentLesson.CurrentIndex].ToString() == " ")
