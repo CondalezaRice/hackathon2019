@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MKUltra.Views"
       xmlns:controls="clr-namespace:MKUltra.UI.Controls"
-      mc:Ignorable="d" >
+      mc:Ignorable="d" 
+      x:Name="StartMenuControl">
 
     <WrapPanel Orientation="Horizontal">
         <Grid Margin="20">
@@ -48,7 +49,9 @@
                 TextElement.FontWeight="Bold"
                 TextElement.FontSize="26"
                 VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center">
+                HorizontalContentAlignment="Center"
+                SelectionChanged="comboBox_SelectionChanged">
+                <ComboBoxItem Content="Baby" HorizontalAlignment="Left" Width="200"/>
                 <ComboBoxItem Content="Easy" HorizontalAlignment="Left" Width="200"/>
                 <ComboBoxItem Content="Medium" HorizontalAlignment="Left" Width="200"/>
                 <ComboBoxItem Content="Hard" HorizontalAlignment="Left" Width="200"/>
@@ -59,6 +62,16 @@
                 Background ="White" 
                 FontSize="30" 
                 Command="{Binding StartGame}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=StartMenuControl, Path=DataContext.SelectedDifficulty}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock 
                         Text="START"

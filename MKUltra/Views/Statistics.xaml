@@ -59,7 +59,7 @@
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
               <TextBlock Text="Current Combo: " Foreground="White" />
               <TextBlock Text="{Binding Path=Combo}" Foreground="White" />
-              <TextBlock Text="!" Foreground="White" />
+              <TextBlock Text="{Binding Path=Combo_Message}" Foreground="White" />
             </StackPanel>
 
           <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
