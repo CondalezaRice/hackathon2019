@@ -61,6 +61,7 @@
 
         <views:Statistics 
             VerticalAlignment="Center" 
+            DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}"
             Grid.Row="2">
             <views:Statistics.Style>
                 <Style TargetType="{x:Type views:Statistics}">
