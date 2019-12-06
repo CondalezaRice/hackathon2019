@@ -46,6 +46,14 @@ namespace MKUltra.Model
             set => SetProperty(ref _totalSecondsPlayed, value);
         }
 
+        //define percentage correct stuff
+        private double _percentage_correct;
+        public double Percentage_correct
+        {
+            get => _percentage_correct;
+            set => SetProperty(ref _percentage_correct, value);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)
