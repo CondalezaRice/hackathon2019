@@ -98,7 +98,7 @@
                     </Style.Triggers>
                 </Style>
             </StackPanel.Style>
-            <views:Statistics VerticalAlignment="Center" DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}" Width="500"/>
+            <views:Statistics VerticalAlignment="Center" DataContext="{Binding ElementName=MyMainWindow, Path=DataContext.SingleGameStatistics}" Width="800"/>
         </StackPanel>
 
         <Button Width="200" Height="50" FontSize="24" Command="{Binding Path=DataContext.ToggleDisplayStatisticsCommand, ElementName=MyMainWindow}" Content="Statitistics Test" />
