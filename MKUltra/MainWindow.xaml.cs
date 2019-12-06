@@ -126,7 +126,7 @@ namespace MKUltra
             // Console.WriteLine(Environment.CurrentDirectory);
             string Path = Environment.CurrentDirectory;
             Path = Path.Remove(Path.Length-9);
-            Path = Path + "team_america.wav";
+            Path = Path + "fortunate_son.wav";
             Console.WriteLine(Path);
 
             System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(Path);
@@ -171,7 +171,7 @@ namespace MKUltra
                     System.Media.SoundPlayer soundPlayer2 = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify.wav");
                     soundPlayer2.Play();
                 }
-                if (gvm.SingleGameStatistics.Combo >= 50)
+                if (gvm.SingleGameStatistics.Combo == 50)
                 {
                     //do something else cool
                     System.Media.SoundPlayer player = new System.Media.SoundPlayer();
