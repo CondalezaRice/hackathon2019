@@ -70,6 +70,13 @@ namespace MKUltra.Model
             set => SetProperty(ref _combo_message, value);
         }
 
+        private int _wordsPerMinute;
+        public int WordsPerMinute
+        {
+            get => _wordsPerMinute;
+            set => SetProperty(ref _wordsPerMinute, value);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName]string propertyName = null)

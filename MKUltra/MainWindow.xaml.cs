@@ -23,7 +23,6 @@ namespace MKUltra
     {
         GameViewModel gvm = new GameViewModel();
         private bool _isChallengeStarted = false;
-        private bool _isChallengeEnded = false;
 
         public MainWindow()
         {
@@ -131,17 +130,20 @@ namespace MKUltra
 
             System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(Path);
 
-            if (!_isChallengeStarted && !_isChallengeEnded)
+            if (gvm.SingleGameStatistics.TotalCharactersTyped == 0)
             {
                 _isChallengeStarted = true;
 
                 //Start timer
                 Task.Run(async () =>
                 {
-                    while (!gvm.PlayerHasWon)
+                    while (!gvm.PlayerHasWon && gvm.GameHasStarted)
                     {
                         await Task.Delay(1000);
-                        gvm.SingleGameStatistics.TotalSecondsPlayed++;
+                        if (!gvm.PlayerHasWon && gvm.GameHasStarted)
+                        {
+                            gvm.SingleGameStatistics.TotalSecondsPlayed++;
+                        }
                     }
                 });
             }
@@ -200,15 +202,21 @@ namespace MKUltra
             {
                 gvm.SingleGameStatistics.Percentage_correct = 0;
             }
+
+            //Update words per minute
+            gvm.SingleGameStatistics.WordsPerMinute = Convert.ToInt32(Math.Floor(gvm.SingleGameStatistics.TotalWords / (gvm.SingleGameStatistics.TotalSecondsPlayed/60)));
             
             //End of game cumulative updating
             if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
             {
                 gvm.PlayerHasWon = true;
-                _isChallengeEnded = true;
+                _isChallengeStarted = false;
                 // cumulative update stats
                 ++gvm.CumulativeStatistics.GamesWon;
                 ++gvm.CumulativeStatistics.TotalGamesPlayed;
+                gvm.CumulativeStatistics.TotalWords += gvm.SingleGameStatistics.TotalWords;
+                gvm.CumulativeStatistics.TotalSecondsPlayed += gvm.SingleGameStatistics.TotalSecondsPlayed;
+                gvm.CumulativeStatistics.WordsPerMinute = Convert.ToInt32(Math.Floor(gvm.CumulativeStatistics.TotalWords / (gvm.CumulativeStatistics.TotalSecondsPlayed / 60)));
             }
             else if (gvm.CurrentLesson.TypingProgress.Length == gvm.CurrentLesson.LessonString.Length)
             {

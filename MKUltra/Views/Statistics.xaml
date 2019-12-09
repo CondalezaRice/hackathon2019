@@ -60,19 +60,18 @@
               <TextBlock Text="{Binding Path=SingleGameStatistics.Percentage_correct}" Foreground="White" />
               <TextBlock Text="%" Foreground="White" />
             </StackPanel>
-          
+
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="6">
-              <TextBlock Text="Current Combo: " Foreground="White" />
-              <TextBlock Text="{Binding Path=SingleGameStatistics.Combo}" Foreground="White" />
-              <TextBlock Text="{Binding Path=SingleGameStatistics.Combo_Message}" Foreground="White" />
+                <TextBlock Text="Current Combo: " Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.Combo}" Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.Combo_Message}" Foreground="White" />
             </StackPanel>
 
-          <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="7">
-            <TextBlock Text="Time Elapsed: " Foreground="White" />
-                <TextBlock Text="{Binding Path=SingleGameStatistics.TotalSecondsPlayed}" Foreground="White" />
-                <TextBlock Text=" seconds" Foreground="White" />
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="7">
+                <TextBlock Text="Words Per Minute (this game): " Foreground="White" />
+                <TextBlock Text="{Binding Path=SingleGameStatistics.WordsPerMinute}" Foreground="White" />
             </StackPanel>
-            
+
             <!--Timer column start-->
             <local:DigitalTimer DataContext="{Binding Path=SingleGameStatistics}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <!--Timer column stop-->
@@ -94,6 +93,10 @@
             <TextBlock Text="Games Lost: " Foreground="White" />
             <TextBlock Text="{Binding Path=CumulativeStatistics.GamesLost}" Foreground="White" />
           </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="4">
+                <TextBlock Text="Words Per Minute (overall): " Foreground="White" />
+                <TextBlock Text="{Binding Path=CumulativeStatistics.WordsPerMinute}" Foreground="White" />
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

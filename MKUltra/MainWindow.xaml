@@ -50,7 +50,7 @@
                 </Style>
             </Grid.Style>
             <TextBox 
-                TextWrapping="Wrap" 
+                TextWrapping="Wrap"
                 VerticalAlignment="Stretch" 
                 Text="{Binding ElementName=MyMainWindow, Path=DataContext.CurrentLesson.LessonString, Mode=OneWay}" 
                 FontSize="18" 
